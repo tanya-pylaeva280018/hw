@@ -1,0 +1,37 @@
+using System;
+
+namespace _31
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int target = 200;
+            int ways = 0;
+
+            for (int x = target; x >= 0; x -= 200)
+            {
+                for (int y = x; y >= 0; y -= 100)
+                {
+                    for (int z = y; z >= 0; z -= 50)
+                    {
+                        for (int q = z; q >= 0; q -= 20)
+                        {
+                            for (int k = q; k >= 0; k -= 10)
+                            {
+                                for (int a = k; a >= 0; a -= 5)
+                                {
+                                    for (int b = a; b >= 0; b -= 2)
+                                    {
+                                        ways++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            Console.WriteLine(ways);
+        }
+    }
+}
