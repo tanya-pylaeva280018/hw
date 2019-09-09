@@ -1,0 +1,39 @@
+using System;
+
+namespace _14_2._4
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int MaxCount = 0;//наибольшее кол-во звеньев
+            int MaxValue = 0;//число с самым большим кол-во звеньев
+            int[] lastValue = new int[1000001];//что бы заного не считать кол-во звеньев для чисел посчитаных ранее 
+            for (int i = 2; i <= 1000000; i++)
+            {
+                long j = i;
+                int c = 0;//счетчик звеньев
+                while (j != 1 && j >= i)
+                {
+                    c++;
+                    if ((j % 2) == 0)
+                    {
+                        j /= 2;
+                    }
+                    else
+                    {
+                        j = j * 3 + 1;
+                    }
+                }
+                lastValue[i] = c + lastValue[j];//заполняем массив кол-ом звеньев для числа i
+
+                if (lastValue[i] > MaxCount)
+                {
+                    MaxCount = lastValue[i];
+                    MaxValue = i;
+                }
+            }
+            Console.WriteLine(MaxValue);
+        }
+    }
+}
