@@ -1,0 +1,20 @@
+using System;
+using System.Numerics;
+
+namespace _48
+{
+    class Program
+    {
+       
+        static void Main(string[] args)
+        {
+            BigInteger num = 0;
+            for (int n = 1; n <= 1000; n++)
+            {
+                num += BigInteger.Pow(n, n);
+            }
+            Console.WriteLine(num % 10000000000);
+        }
+        
+    }
+}    
