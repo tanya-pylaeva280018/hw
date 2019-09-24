@@ -1,0 +1,37 @@
+public static Dictionary<long, int> CachedChainLengths = new Dictionary<long, int>();
+ 
+public static int ChainLength(long n)
+{
+    if (n == 1) return 1;
+    int chainLength;
+    if (CachedChainLengths.TryGetValue(n, out chainLength)) return chainLength;
+ 
+    long next = (n & 1) == 0 ? (n >> 1) : (n << 1) + n + 1;
+    chainLength = ChainLength(next) + 1;
+    CachedChainLengths.Add(n, chainLength);
+    return chainLength;
+}
+ 
+public static void DonnytonProblem14Better()
+{
+    Stopwatch clock = Stopwatch.StartNew();
+ 
+    long maxNumber = 1;
+    int maxChainLength = 1;
+ 
+     
+    for (int n = 2; n < 1000000; n++)
+    {
+        int chainLength = ChainLength(n);
+        if (chainLength > maxChainLength)
+        {
+            maxNumber = n;
+            maxChainLength = chainLength;
+        }
+    }
+ 
+    clock.Stop();
+ 
+    Console.WriteLine("The starting number {0} produces a sequence of {1}.", maxNumber, maxChainLength);
+    Console.WriteLine("Solution took {0} ms", clock.ElapsedMilliseconds);
+}
