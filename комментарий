@@ -1,0 +1,8 @@
+import pymorphy2
+
+n = int(input())
+morph = pymorphy2.MorphAnalyzer()
+comment = morph.parse('комментарий')[0]
+v1, v2, v3 = comment.inflect({'sing', 'nomn'}), comment.inflect({'gent'}), comment.inflect({'plur', 'gent'})
+f = comment.make_agree_with_number(n).word
+print(str(n) + " " + f)
