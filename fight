@@ -1,0 +1,36 @@
+import random
+
+class warrior():
+  health = 100
+  def Hit(self):
+    self.health -= 20
+
+subzero = warrior()
+scorpion = warrior()
+Fight = bool
+
+while Fight :
+    if subzero.health <= 0:
+        print("Скорпион победил!")
+        break
+    if scorpion.health <= 0:
+        print("Сабзиро победил!")
+        break
+
+    def funcs():
+     if True :
+        f = [subzero_hit(), scorpion_hit()]
+        rand_func = random.choice(f)
+        print(random.choice(f))
+
+    def subzero_hit():
+        print("Сабзиро наносит удар!")
+        subzero.Hit()
+        print("У Скорпион осталось " + str(subzero.health) + " хп")
+        pass
+    def scorpion_hit():
+        print("Скорпион наносит удар!")
+        scorpion.Hit()
+        print("У Сабзиро осталось " + str(scorpion.health) + " хп")
+        pass
+    funcs()
