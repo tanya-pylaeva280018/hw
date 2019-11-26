@@ -1,0 +1,173 @@
+# FILE = r"C:\Users\MSI Gaming\Desktop\вектор\cc.en.300.vec"
+# with open(r"C:\Users\MSI Gaming\Desktop\вектор\word2phones.pkl", "rb") as out_file:
+import io
+import numpy as np
+import pickle
+
+
+FILE = r"C:\Users\MSI Gaming\Desktop\вектор\cc.en.300.vec"
+
+
+# def load_vectors(fname):
+#     fin = io.open(fname, 'r', encoding='utf-8', newline='\n', errors='ignore')
+#     # n, word2vec = map(int, fin.readline().split())
+#     data = {}
+#     # l_count = 0
+#     for line in fin:
+#         tokens = line.rstrip().split(' ')
+#         # if tokens[0] in good or tokens[0] in bad:  # only words in lists
+#         data[tokens[0]] = map(float, np.array(tokens[1:]))
+#         # l_count += 1
+#         # print(np.array(tokens[1:]))
+#     return data
+#
+#
+# word2vec = load_vectors(FILE)
+#
+# # print(word2vec['nice'])  # слово - вектор
+#
+# word2vec_n_tr_dict = {}
+# with open(r"C:\Users\MSI Gaming\Desktop\вектор\word2phones.pkl", "rb") as out_file:
+#     word2tr = pickle.load(out_file)
+#
+# # print(word2tr['nice'])  # слово - транскрипция
+#
+# for word in word2tr.keys():
+#     try:
+#         word2vec_n_tr_dict[word] = (word2vec[word], word2tr[word])
+#     except:
+#         # pass
+#         print(word)
+#
+# print(word2vec_n_tr_dict.get('nice', None))
+
+# with open("word2vectranscr.pkl", "wb") as out_file:
+#   pickle.dump(word2vec_n_tr_dict, out_file, protocol=pickle.HIGHEST_PROTOCOL)
+
+with open("word2vectranscr.pkl", "rb") as out_file:
+    word2vectranscr = pickle.load(out_file)
+# print(word2vectranscr)
+
+synonyms = {'Angular': ['angular', 'gnarled', 'gnarly', 'craggy', 'awkward', 'angled'],
+            'Round': ['plump', 'bumpy', 'circular', 'round', 'rounded'],
+            'Bad': ['bad', 'poor', 'ill', 'amiss', 'evil', 'cheap', 'defective', 'inferior', 'low', 'mean'],
+            'Good': ['good', 'well', 'nice', 'pretty', 'fine', 'satisfactory', 'solid', 'fair', 'handsome','desirable'],
+            'Cold': ['cold', 'chill', 'chilly', 'inclement', 'wintry', 'frozen', 'frosty'],
+            'Hot': ['hot', 'ardent', 'passionate', 'violent', 'warm', 'cordial', 'thermal', 'fervent', 'heated'],
+            'Complex': ['complex', 'complicated', 'sophisticated', 'compound', 'intricate', 'composite', 'elaborate','tricky'],
+            'Simple': ['plain', 'simple', 'ordinary', 'elementary', 'common', 'straightforward', 'easy'],
+            'Cowardly': ['cowardly', 'coward', 'dastardly', 'sneaky', 'sneaking'],
+            'Brave': ['brave', 'gallant', 'courageous', 'valiant', 'redoubtable', 'bold'],
+            'Dangerous': ['terrible', 'frightful', 'dreadful', 'awful', 'agonizing', 'fearful', 'formidable','horrible', 'desperate', 'tremendous'],
+            'Secure': ['secure', 'sure', 'safety', 'permissible', 'foolproof', 'safe', 'wholesome'],
+            'Dark': ['dark', 'black', 'murky', 'shadowy', 'gloomy', 'shady'],
+            'Luminous': ['light', 'clear', 'bright', 'blond', 'blonde', 'fair', 'luminous', 'lucid'],
+            'Difﬁcult': ['difficult', 'hard', 'laborious', 'serious', 'severe', 'grave', 'oppressive', 'painful','heavy', 'weighty'],
+            'Easy': ['easy', 'light', 'lucky', 'facile', 'slight', 'gentle', 'airy', 'ready', 'dolly'],
+            'Evil': ['wicked', 'evil', 'vicious', 'malicious', 'spiteful', 'angry', 'fierce', 'severe', 'bad','mordant'],
+            'Benign': ['beneficent', 'good', 'benign', 'decent', 'gentle', 'gracious', 'kind'],
+            'Faded': ['faded', 'withered', 'delicate', 'languid', 'bleak', 'ﬂat', 'faint', 'sickly'],
+            'Bright': ['bright', 'vivid', 'shining', 'cheerful', 'striking', 'glowing', 'garish', 'colorful'],
+            'Feeble': ['sickly', 'feeble', 'frail', 'weakly', 'puny', 'spindly'],
+            'Strong': ['powerful', 'mighty', 'strong', 'vigorous', 'vibrant', 'powerfully', 'mightily', 'strongly'],
+            'Masculine': ['feminine', 'womanly', 'ladylike'],
+            'Feminine': ['masculine', 'manly', 'virile', 'masculine', 'manly'],
+            'Passive': ['passive', 'dormant', 'quiescent', 'floppy', 'unemotional', 'tame', 'effortless', 'flaccid'],
+            'Active': ['active', 'dynamic', 'stirring', 'energetic', 'dynamical', 'favourable', 'ambitious', 'busy','industrious'],
+            'Quiet': ['quiet', 'calm', 'soft', 'low', 'gentle', 'flat'],
+            'Loud': ['loud', 'noisy', 'notorious', 'pompous'],
+            'Rough': ['rude', 'rough', 'gross', 'coarse', 'crude', 'tough', 'brute', 'barbaric', 'barbarous','beastly'],
+            'Tender': ['tender', 'affectionate', 'gentle', 'delicate', 'soft', 'sweet', 'subtle', 'fond', 'sentimental','affectionate'],
+            'Sad': ['sad', 'sorrowful', 'dreary', 'deplorable', 'elegiac', 'lamentable', 'melancholy', 'sorry'],
+            'Joyful': ['merry', 'gay', 'cheerful', 'airy', 'glad', 'jolly', 'joyful', 'jaunty'],
+            'Short': ['short', 'brief', 'small', 'little', 'skimpy'],
+            'Long': ['long', 'tall', 'gaunt', 'spindly', 'lanky', 'voluminous', 'lengthy'],
+            'Slow': ['slow', 'long', 'slack', 'sluggish', 'laggard', 'creeping', ' leisurely', 'plodding'],
+            'Quick': ['quick', 'fast', 'swift', 'agile', 'prompt', 'speedy', 'rapid', 'ready', 'brief'],
+            'Small': ['small', 'little', 'petite', 'diminutive', 'short', 'trifling', 'petty'],
+            'Big': ['large', 'great', 'big', 'greater', 'high', 'wide', 'major', 'grownup', 'hulk'],
+            'Smooth': ['smooth', 'plain', 'even', 'glib', 'sleek', 'slick', 'polished', 'clean', 'fluent'],
+            'Rough_or_not_smooth': ['rough', 'uneven', 'rugged', 'coarse', 'corny', 'grainy', 'harsh', 'ragged','shaggy'],
+            'Ugly': ['homely', 'ugly', 'mean', 'plain', 'charmless'],
+            'Beautiful': ['beautiful', 'handsome', 'ﬁne', 'gallant', 'goodly', 'likely', 'lovely', 'personable','sheen']}
+
+# print(word2vectranscr['easy'])
+
+axes2vec = {}#словарь суммы векторов слов2
+for item in synonyms.items():
+    sum = np.zeros((300))#создаем пустой массив с 300 значениями
+    for word in item[1]:#берем слово из синонимов и их слова с векторами
+        try:
+            sum += np.array(list(word2vectranscr[word][0]))#из словаря(слово-вектор-транскрипция) берем от туда вектор слова и суммируем
+        except:
+            print(word)
+    axes2vec[item[0]] = sum
+
+# print(axes2vec)
+
+axes = {#получаем оси
+           'Angular - Round': (-(axes2vec['Angular']) + axes2vec['Round']),
+            'Bad - Good': (-(axes2vec['Bad']) + axes2vec['Good']),
+            'Cold - Hot': (-(axes2vec['Cold']) + axes2vec['Hot']),
+            'Complex - Simple': (-(axes2vec['Complex']) + axes2vec['Simple']),
+            'Cowardly - Brave': (-(axes2vec['Cowardly']) + axes2vec['Brave']),
+            'Dangerous - Secure': (-(axes2vec['Dangerous']) + axes2vec['Secure']),
+            'Dark - Luminous': (-(axes2vec['Dark']) + axes2vec['Luminous']),
+            'Difﬁcult - Easy': (-(axes2vec['Difﬁcult']) + axes2vec['Easy']),
+            'Evil - Benign': (-(axes2vec['Evil']) + axes2vec['Benign']),
+            'Faded - Bright': (-(axes2vec['Faded']) + axes2vec['Bright']),
+            'Feeble - Strong': (-(axes2vec['Feeble']) + axes2vec['Strong']),
+            'Masculine - Feminine': (-(axes2vec['Masculine']) + axes2vec['Feminine']),
+            'Passive - Active': (-(axes2vec['Passive']) + axes2vec['Active']),
+            'Quiet - Loud': (-(axes2vec['Quiet']) + axes2vec['Loud']),
+            'Rough - Tender': (-(axes2vec['Rough']) + axes2vec['Tender']),
+            'Sad - Joyful': (-(axes2vec['Sad']) + axes2vec['Joyful']),
+            'Short - Long': (-(axes2vec['Short']) + axes2vec['Round']),
+            'Slow - Quick': (-(axes2vec['Angular']) + axes2vec['Quick']),
+            'Small - Big': (-(axes2vec['Small']) + axes2vec['Big']),
+            'Smooth - Rough_or_not_smooth': (-(axes2vec['Smooth']) + axes2vec['Rough_or_not_smooth']),
+            'Ugly - Beautiful': (-(axes2vec['Ugly']) + axes2vec['Beautiful']),
+}
+print(axes['Angular - Round'])
+
+
+sounds = []
+for item in word2vectranscr.items():#из словаря слово вектор транскрипция
+    for transcription in item[1][1]:#берем транскрипцию слова
+        try:
+            sounds += transcription#добавляем все транскрипции
+        except:
+            print(transcription)
+sounds = list(set(sounds))#set убираются повторения транскрипция получается лист со звуками
+# print(sounds)
+
+sound2word = {}
+#print(sounds)
+for sound in sounds:
+    first_sound = []
+    with_sound = []
+    without_sound = []
+    for item in word2vectranscr.items():
+        transcription = item[1][1]#берем транскрипцию слова
+        if transcription[0] == sound:
+            first_sound.append(item[0])#добавляются слова у которых первый этот звук который мы взяли из sounds
+        elif sound in transcription:
+            with_sound.append(item[0])#этот звук вообще есть в слове
+        else:
+            without_sound.append(item[0])
+    sound2word[sound] = (first_sound, with_sound, without_sound)#словарь кортежей слов
+
+try:
+    pass
+    # print(sounds[0])
+    # print(sound2word[sounds[0]][0][:5])#звук который стоит 1 в первых 5 слов
+    # print(sound2word[sounds[0]][1][:5])
+    # print(sound2word[sounds[0]][2][:5])
+except:
+    pass
+# cos_vec={}
+# for axes_vec in axes:# берем оси которых 21
+#     for phone in sound2word:# берем слова-вектора, но нам надо взять вектора
+#         for vec in item[1][0]: #берем вектор слова
+
+#np.dot(a, b)скалярное произведение
