@@ -1,0 +1,39 @@
+'''
+Создать функцию solve_square_equation(exp: str) → list:,
+которая решает квадратное уравнение, заданное в символьном виде.
+Функция возвращает список корней уравнения в порядке возрастания.
+Если корней нет, или при возникновении другой ошибки,
+функция возвращает exception класса SquareEquationException
+'''
+import math
+class SquareEquationException(Exception):
+    def __init__(self, *args):
+        Exception.__init__(self, *args)
+
+def solve_square_equation(expr):
+    f_num = expr.split('x^2')
+    num = f_num[1].split('x')
+    num.append(f_num[0])
+
+    a = float(num[2])
+    b = float(num[0])
+    c = float(num[1])
+
+    discr = b ** 2 - 4 * a * c
+    if discr > 0:
+        x1 = (-b + math.sqrt(discr)) / (2 * a)
+        x2 = (-b - math.sqrt(discr)) / (2 * a)
+        if x1 > x2:
+            answer = [x1,x2]
+            return answer
+        else:
+            answer = [x2,x1]
+            return answer
+    elif discr == 0:
+        x3 = -b / (2 * a)
+        return x3
+
+    if discr < 0 or a == 2:
+            raise SquareEquationException
+
+print(solve_square_equation('2x^2+5x-3'))
