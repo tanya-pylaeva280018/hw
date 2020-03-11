@@ -1,0 +1,73 @@
+# hw
+‘Angular’ : ['anguloso', 'oblicuo', 'sesgado', 'esquinado', 'abierto', 'cerrado', ‘torpe’],
+‘Round' :['esférico', 'anular', 'redondeado', 'esferoidal', 'elíptico', 'orondo', 'convexo', 
+'abombado', 'curvo', 'curvado', 'cóncavo', 'oval’],
+
+
+‘Bad’: ['diabólico', 'infernal', 'maléfico', 'maldito', 'rematado', 'virulento', 'rencoroso', 'extremista’, ‘ruin', 'infame', 'vil', 'inicuo', 'bajo', 'innoble', 'injusto', 'bellaco', 'villano', 'bribón', 'criminal', 'malandrín', 'sinvergüenza', 'insolente', 'imprudente', 'perverso', 'maligno', 'malicioso', 'depravado', 'vicioso', 'inmoral', 'deshonesto', 'indecente', 'pérfido', 'fementido’, 'doliente', 'paciente', 'indispuesto', 'quejumbroso', 'delicado', 'afectado', 'achacoso', 'acometido', 'aquejado', 'contagiado', 'convaleciente', 'infectado’, ‘nocivo', 'dañino', 'perjudicial', 'peligroso', 'desfavorable', 'dañoso', 'pernicioso', 'aciago', 'funesto', 'nefasto', 'infausto', 'catastrófico', 'calamitoso', 'malhadado’, ‘estropeado', 'usado', 'viejo', 'deteriorado', 'inservible', 'dañado', 'roto', 'deslucido’, ‘travieso', 'revoltoso', 'enredador', 'desobediente', 'inquieto’, ‘repelente', 'execrable', 'detestable', 'odioso', 'pésimo', 'fastidioso', 'molesto', 'antipático', 'desagradable’, ‘imperfecto', 'inferior', 'defectuoso', 'tosco', 'incorrecto', 'malcriado', 'incompleto’, ‘trabajoso', 'dificultoso', 'difícil', 'penoso', 'ingrato', 'lamentable’, ‘cruel', 'riguroso', 'insensible', 'inhumano’],
+‘Good’ : ['humano', ' caritativo', ' compasivo', ' piadoso', ' bienhechor', ' misericordioso', ' clemente', ' sensible', ' desprendido', ' generoso', ' sacrificado', ' benévolo', ' benigno', ' bondadoso', ' indulgente', ' comprensivo', ' virtuoso', ' honesto', ' afable', ' servicial', ' agradable', ' afectuoso', ' divertido', ' cordial', ' tierno', ' cándido', ' simple', ' bonachón', ' inocente', ' crédulo', ' buenazo', ' provechoso', ' ventajoso', ' beneficioso', ' valioso', ' fructuoso', ' productivo', ' adecuado', ' conveniente', ' utilizable', ' servible', ' favorable', ' propicio', ' justo', ' estricto', ' exacto', ' riguroso', ' excelente', ' óptimo', ' grande', ' elevado', ' distinguido', ' escogido],
+
+‘Cold’ : ['fresco', ' frescura', ' frescor', ' frialdad', ' Gélido', ' gélido', ' glacial', ' helado', ' Enfriado', ' enfriado', ' refrigerado', ' congelado', ' frígido', ' desapasionado', ' insensible', ' indiferente', ' desafecto', ' apático', ' desapegado', ' impasible', ' sereno', ' imperturbable'],
+‘Hot' : ['ardor', ' entusiasmo', ' pasión', ' fervor', ' vehemencia', ' excitación', ' energía', ' vivacidad', ' dinamismo', ' viveza', ' fuego', ' combustión', ' quemazón', ' acaloramiento', ' encendimiento', ' hoguera', ' ardimiento', ' incendio', ' inflamación', ' llama', ' calidez', ' incandescencia', ' caloría', ' sudor', ' calentamiento', ' calefacción', ' calorífero', ' temperatura', ' fiebre', ' calentura', ' bochorno', ' canícula', ' sol', ' insolación'],
+
+'Complex’ : ['complicado', ' difícil', ' dificultoso', ' enmarañado', ' enredado', ' espinoso', ' intrincado', ' profundo', ' engorroso', ' enrevesado', ' compuesto', ' múltiple', ' variado', ' diverso],
+‘semple’ : ['necio', ' estúpido', ' sandio', ' atontado', ' torpe', ' inepto', ' negado', ' pollino', ' papamoscas', ' pánfilo', ' melón', ' simplemente', ' mero', ' sólo', ' sencillo', ' llano', ' natural', ' ingenuo', ' cándido', ' inocente', ' crédulo', ' incauto', ' infeliz', ' menguado', ' de buena fe', ' fácil', ' baladí', ' trivial', ' fútil', ' frívolo', ' superficial', ' simplón],
+
+‘Cowardly’ : ['temeroso', ' asustadizo', ' aprensivo', ' receloso', ' medroso', ' timorato', ' miedoso', ' ', 'atemorizado', ' pusilánime', ' tímido', ' irresoluto', ' turbado', ' vacilante', ' tembloroso', ' apocado', ' timorato', ' encogido '],
+‘Brave' : ['animoso', ' esforzado', ' valeroso', ' bizarro', ' varonil', ' impávido', ' estoico', ' impertérrito', ' ', ' imperturbable', ' inconmovible', ' osado', ' temerario', ' audaz', ' atrevido', ' decidido', ' resuelto', ' determinado', ' especial', ' intrépido', ' denodado', ' arrojado', ' arriesgado', ' ardido', ' épico', ' heroico', ' cid', ' paladín', ' héroe', 'perdonavidas', ' fanfarrón', ' bravucón', ' baladrón', ' valentón', ' majo', ' matón', ' matasiete', ' guapo', ' jactancioso', ' fantasma', ' jaque', ' pincho', ' gallo', ' guapetón', ' belicoso', ' aguerrido', ' pendenciero', ' agresivo', ' indomable', ' bravío', ' invencible', ' enérgico', ' robusto', ' fuerte'],
+'Dangerous’ : ['aventurado', ' arriesgado', ' expuesto', ' atrevido', ' temerario', ' amenazador', ' alarmante', ' temible', ' ocasionado', ' inseguro', ' riesgoso'],
+ ‘Secure' : ['cierre', ' garantía', ' fianza', ' seguridad', ' protegido', ' resguardado', ' defendido', ' salvo', ' ileso', ' fiable', ' confiable', ' probado', ' fidedigno', ' estable', ' duradero', ' robusto', ' sólido],
+
+
+'Dark’ : ['obscuro', ' sombrío', 'tenebroso', 'lúgubre', 'negro', 'tétrico', 'lóbrego', 'triste', 'malhumorado', 'hosco', 'pesimista', 'austero', 'fatídico', 'opaco', 'turbio'],
+‘Luminous’ : ['resplandeciente', 'brillante', 'refulgente', 'esplendente', 'esplendoroso', 'radiante', 'claro', 'lúcido', 'centelleante', 'fulgente', 'lumínico', 'lucífero', 'luminosamente', 'deslumbrante, ‘vívido’, ‘intenso', 'chispeante', 'brilloso', 'límpido', 'transparente', 'llamativo', 'vistoso', 'decorativo'],
+
+
+
+'Difficult’ :  ['problema', 'trance', 'conflicto', 'apuro', 'obstáculo', 'inconveniente', 'impedimento', 'estorbo', 'traba', 'barrera', 'valla', 'escollo', 'complejidad obstrucción', 'obstáculo', 'contratiempo', 'complicación', 'desventaja', 'obstaculizar', 'impedir', 'entorpecer', 'complicar', 'interferir', 'obstruir', 'coartar', 'obstar', 'atascar', 'intervenir'],
+‘Easy' : ['posible', ' factible', ' realizable', ' practicable', ' viable', ' accesible', ' sencillo', ' llano', ' simple', ' natural', ' obvio', ' claro', ' evidente', ' manifiesto', ' elemental', ' inteligible', ' comprensible', ' ligero', ' liviano', ' probable],
+
+
+'Evil’ : ['inicuo', 'ruin', 'vil', 'bajo', 'infame', 'ignominioso', 'indigno', 'injusto', 'miserable', 'mezquino', 'malandrín', 'criminal', 'villano', 'rufián', 'bribón', 'sinvergüenza', 'insolente', 'perverso', 'maligno', 'malo', 'cruel', 'malévolo', 'malicioso', 'maldito', 'diabólico', 'infernal', 'maléfico', 'réprobo', 'virulento', 'odioso', 'execrable', 'detestable', 'endemoniado', 'depravado', 'maldecido', 'protervo', 'vicioso', 'dañino', 'terrible', 'siniestro'],
+‘Benign' : ['apacible', 'manso', 'bondadoso', 'benévolo', 'humano', 'clemente', 'piadoso', 'compasivo', 'pío', 'generoso', 'magnánimo', 'delicado', 'afable', 'complaciente', 'afectuoso', 'agradable', 'cálido', 'favorable', 'propicio', 'benevolente', 'blando', 'suave'],
+
+
+'Faded’ : ['esfumado', 'evaporado', 'desaparecido', 'disipado', 'borroso', 'desteñido', 'vago', 'impreciso', 'indefinido', 'confuso', 'desvaído', 'débil', 'apagado', 'descolorido', 'tenue', 'pálido', 'inconsciente', 'aturdido', 'turbado', 'arrogante', 'altivo', 'orgulloso', 'vano', 'presuntuoso', 'presumido', 'resaltado', 'realzado', 'subrayado', 'humilde', 'modesto', 'definido', 'preciso', 'recobrado', 'reanimado', 'palidecido', 'aclarado', 'borrado', 'suprimido', 'anulado', 'frustrado', 'atenuado', 'disimulado', 'deshecho', 'disgregado', 'disuelto', 'difuminado', 'desdibujado', 'diluido', 'desmayado', 'desterrar', 'echar', 'expulsar', 'diseminar'],
+ ‘Bright' : ['reluciente', 'lustroso', 'resplandeciente', 'brilloso', 'luminoso', 'chispeante', 'dorado', 'refulgente', 'radiante', 'fulgurante', 'esplendente', 'luciente', 'deslumbrante', 'vívido', 'intenso', 'impresionante', 'expresivo', 'gráfico', 'fúlgido', 'centelleante', 'esplendoroso', 'joya', 'gema', 'diamante', 'lúcido', 'lúcido', 'genial', 'flamante', 'nítido', 'cegador', 'sobresaliente', 'destacado', 'señalado', 'predominante', 'distinguido', 'ilustre', 'admirable', 'espléndido'],
+
+'Feeble’ : ['endeble', 'canijo', 'enclenque', 'frágil', 'enfermizo', 'enfermo', 'alfeñique', 'blandengue', 'flaco', 'escuálido', 'anémico', 'laxo', 'exangüe', 'gastado', 'exhausto', 'cansado', 'debilitado', 'extenuado', 'agotado', 'menesteroso', 'lánguido', 'triste', 'blando', 'flojo', 'apático', 'tenue', 'apocado', 'pusilánime', 'cobarde', 'timorato', 'encogido', 'vacilante', 'quebrado', 'indefenso'],
+‘Strong’ : ['poderoso', 'potente', 'pujante', 'enérgico', 'alentado', 'profundo', 'hondo', 'firme', 'férreo', 'inquebrantable', 'indestructible', 'esforzado', 'valiente', 'varonil', 'estoico', 'bizarro', 'fornido', 'forzudo', 'macizo', 'hercúleo', 'nervudo', 'fortachón', 'musculoso', 'atlético', 'impetuoso', 'ardoroso', 'imponente', 'gigantesco', 'formidable', 'intenso', 'invencible', 'invulnerable', 'agudo', 'acérrimo', 'consistente', 'robusto', 'recio', 'sólido', 'resistente'],
+
+
+'Masculine’ : ['varonil', 'viril', 'macho', 'fuerte', 'enérgico', 'vigoroso', 'recio', 'valiente', 'hombruno', 'hombre', 'varón'],
+ ‘Feminine' : ['femenil', 'afeminado'],
+
+'Activo’ : ['dinámico', 'eficiente', 'eficaz', 'empleado', 'productivo', 'directo', 'operativo', 'reproductivo', 'enérgico', 'vigoroso', 'militante', 'potente', 'emprendedor', 'intenso', 'intensivo', 'accionar', 'mover', 'diligente', 'laborioso', 'afanoso', 'solícito', 'poderoso', 'vivaz', 'entusiasta', 'pronto', 'rápido', 'ágil', 'apresurado', 'vivo', 'movilizó'],
+‘pasivo' : ['inactivo', 'apático', 'neutro', 'inerte', 'sedentario', 'ocioso', 'jubilatorio', 'pasivamente', 'indiferente', 'insensible', 'neutral', 'impasible', 'tibio', 'inmóvil', 'estático', 'quieto', 'indolente', 'holgazán', 'flojo', 'perezoso', 'contemplativo'],
+
+'Passive’ : ['mudo', 'apacible', 'tranquilo', 'callado', 'sereno', 'taciturno', 'sosegado', 'quieto', 'quedó', 'reposado', 'calmoso', 'sentado', 'plácido', 'pacífico', 'manso', 'tácito', 'ecuánime', 'sigiloso', 'calmado', 'calmo', 'reservado'],
+‘Active' : ['bullicioso', 'tumultuoso', 'estruendoso', 'estrepitoso', 'atronador', 'altisonante', 'clamoroso', 'escandaloso', 'sonoro', 'fuerte', 'alto', 'estridente', 'rumoroso', 'alborotador', 'ensordecedor', 'retumbante', 'rimbombante'],
+
+
+'Quiet’ : ['rugoso', 'rudo', 'tosco', 'basto', 'abrasivo', 'grueso', 'pelado', 'escabroso', 'grosero', 'burdo', 'vulgar', 'malsonante', 'craso', 'afilado', 'desabrido', 'arisco', 'hosco', 'insociable', 'brusco', 'bronco', 'duro', 'riguroso', 'austero', 'rígido', 'severo', 'furioso', 'difícil', 'arduo'],
+ ‘Loud' : ['cariñoso', 'amoroso', 'afectuoso', 'acariciador', 'bondadoso', 'amable', 'cordial', 'blando', 'delgado', 'sensible', 'sentimental', 'susceptible', 'impresionable', 'sensitivo', 'delicado', 'compasivo', 'entrañable', 'afable', 'expresivo'],
+
+'Rough’ : ['afligido', 'apesadumbrado', 'cabizbajo', 'amargado', 'dolorido', 'apenado', 'abatido', 'desconcertado', 'melancólico', 'tristón', 'nostálgico', 'lúgubre', 'sombrío', 'mustio', 'tétrico', 'lóbrego', 'tenebroso', 'malhumorado', 'oscuro', 'luctuoso'],
+
+’Tender' : ['jovial', 'risueño', 'juguetón', 'despreocupado', 'desenfadado', 'gozoso', 'jubiloso', 'regocijado', 'esparcido', 'divertido', 'animado', 'festivo', 'feliz', 'dichoso', 'bueno', 'vivaz', 'regocijar', 'deleitar', 'divertir', 'eufórico', 'radiante', 'vivaracho', 'humorista', 'gayo', 'gracioso', 'chistoso', 'bromista'],
+
+'Sad’ : ['breve', 'conciso', 'resumido', 'pequeño', 'mediano', 'chiquito', 'momentáneo', 'cercano', 'fugaz', 'efímero', 'abreviado', 'lacónico', 'sucinto', 'insuficiente', 'incompleto', 'truncado', 'diminuto', 'trozo', 'fragmento', 'divido', 'separo', 'cerceno', 'trunco', 'podo', 'atajo', 'hiendo'],
+‘Joyful' ['prolongado', 'crónico', 'continuo', 'sostenido', 'mantenido', 'longitud', 'largura', 'dilatación', 'prolongación', 'largamente', 'alargado', 'difuso', 'continuado', 'encajo'],
+
+'Short’ : ['tardo', 'paulatino', 'tardío', 'aletargado', 'soñoliento', 'silencioso', 'indolente', 'perezoso', 'apático', 'pausado', 'parsimonioso', 'lánguido', 'flemático', 'calmoso', 'moroso', 'lerdo', 'flojo', 'haragán', 'sosegado', 'reposado'],
+‘Long’' : ['rápidamente', 'velozmente', 'aprisa', 'ligeramente', 'prontamente', 'veloz', 'ágil', 'ligero', 'liviano', 'instantáneo', 'presto', 'expeditivo', 'apresurado', 'presuroso', 'acelerado', 'urgente', 'pronto', 'repentino', 'súbito', 'precipitado', 'momentáneo', 'fugaz', 'impetuoso', 'activo', 'dinámico'],
+
+'Small’ : ['diminuto', 'minúsculo', 'chiquito', 'nimio', 'insignificante', 'ínfimo', 'liviano', 'corto', 'sucinto', 'resumido', 'bajo', 'enano', 'exiguo', 'escaso', 'intrascendente', 'limitado', 'reducido'], 
+‘Big': ['gran', 'considerable', 'mayor', 'crecido', 'capaz', 'sustancioso', 'numeroso', 'abundante', 'alto', 'elevado', 'espacioso', 'amplio', 'colosal', 'descomunal', 'enorme', 'gigantesco', 'inmenso', 'monstruoso', 'fiero', 'ilimitado', 'infinito', 'inconmensurable', 'tremendo', 'ostentoso', 'ingente', 'monumental', 'formidable', 'titánico', 'macanudo', 'abultado', 'voluminoso', 'corpulento', 'desmedido', 'exagerado', 'excesivo', 'exorbitante', 'extenso', 'vasto', 'ancho', 'largo'],
+
+
+'Smooth’ : ['alisado', 'pulido', 'aplanado', 'glabro', 'terso', 'lustroso', 'brillante', 'lacio', 'llano', 'igual'],
+‘Rough_or_not_smooth' : ['rugoso', 'tosco', 'abrasivo', 'escabroso', 'accidentado', 'abrupto', 'desigual', 'desnivelado', 'irregular', 'desequilibrado', 'doblado', 'áspero'],
+
+'Ugly’ : ['asqueroso', 'repugnante', 'detestable', 'odioso', 'hediondo', 'repulsivo', 'aborrecible', 'indecente', 'abominable', 'inmundo', 'ingrato', 'execrable', 'antiestético', 'horrible', 'espantoso', 'horroroso', 'atroz', 'desagradable'],
+‘Beautiful' : ['bello', 'bonito', 'precioso', 'lindo', 'guapo', 'pintoresco', 'maravilloso', 'asombroso', 'encantador', 'adorable', 'espléndido', 'magnífico', 'esplendoroso', 'exuberante', 'soberbio', 'ideal', 'excelente', 'imponente', 'estupendo', 'admirable', 'fenomenal', 'agraciado', 'estético', 'primoroso', 'majo', 'elegante', 'atractivo', 'agradable']
