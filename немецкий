@@ -1,0 +1,83 @@
+# hw
+synonyms = {'Angular': ['eckig', 'winkelig', 'facettiert', 'gerippt', 'scharfkantig', 'zugespitzt', 'spitz'],
+
+            'Round': ['Windung', 'Umdrehung', 'Tour', 'Rundfahrt', 'Tur', 'Ring', 'Wahlgang', 'Wahlrunde', 'Rundstrecke', 'Runde', 'Rundgang', 'Schar', 'Kreis'],
+
+            'Bad': ['mies', 'miserabel', 'beschissen', 'lausig', 'mistig', 'schlimm', 'übel', 'unwohl', 'ungut', 'elend', 'arg', 'mangelhaft', 'minderwertig', 'unzuverlässig', 'nachteilig', 'dumm', 'doof', 'faul', 'gammelig', 'jämmerlich', 'kümmerlich', 'kärglich', 'missglückt', 'misslungen', 'missraten', 'schlecht', 'fürchterlich', 'hässlich', 'kläglich', 'kühl', 'schädlich'],
+
+            'Good': ['nett', 'reichlich', 'hübsch', 'glücklich', 'günstig', 'sauber', 'richtig', 'edel', 'ehrenhaft', 'ehrlich', 'fair', 'gesittet', 'gutherzig', 'gutmütig', 'gütig', 'herzensgut'],
+
+            'Cold': ['kühl', 'frisch', 'eisig', 'frostig', 'eiskalt', 'gefühllos', 'gnadenlos', 'grausam', 'herzlos', 'inhuman', 'kaltherzig', 'kalt', 'hartherzig', 'abgekühlt', 'ausgekühlt', 'bitterkalt', 'frostklirrend', 'saukalt'],
+
+            'Hot': ['warm', 'thermal', 'glühend', 'feurig', 'überhitzt', 'brennend', 'sengend', 'flammend', 'hitzig', 'heißblütig', 'leidenschaftlich', 'temperamentvoll', 'kochend', 'siedend'],
+
+            'Complex': ['Gesamtheit', 'Verbund', 'Totalität', 'Ganze', 'kompliziert', 'vielschichtig', 'schwierig', 'diffizil', 'verschachtelt', 'zusammengesetzt', 'subtil', 'schwer', 'verzwickt', 'verworren', 'verwickelt'],
+
+            'Simple': ['leicht', 'simpel', 'primitiv', 'elementar', 'grundlegend', 'prim', 'schlecht', 'schwach', 'bescheiden', 'frugal', 'schlicht'],
+
+            'Cowardly': ['Feigling', 'Angstmeier', 'Angstpeter', 'Hasenfuß', 'Hasenherz', 'Weichling', 'Angsthase', 'Memme'],
+
+            'Brave': ['mutig', 'unerschrocken', 'furchtlos', 'brav', 'wagemutig', 'verwegen', 'mannhaft', 'beherzt', 'mutvoll', 'heldenhaft', 'ruhmreich', 'hingebungsvoll', 'entschlossen', 'heldenmütig', 'heroisch', 'kämpferisch', 'tapfer', 'kühn', 'wacker', 'edel', 'ehrenwert'],
+
+            'Dangerous': ['bedrohlich', 'gefahrvoll', 'unsicher', 'prekär', 'kritisch', 'drohend', 'schädlich', 'bedenklich', 'furchtbar', 'fürchterlich', 'alarmierend', 'beunruhigend', 'lebensgefährlich', 'tödlich', 'gefährlich', 'beängstigend', 'bedrohen'],
+
+            'Secure': ['zuverlässig', 'robust', 'verläßlich', 'solid', 'risikofrei', 'bewährt', 'ungefährlich', 'gefahrlos', 'risikolos', 'unschädlich', 'geschützt', 'sicher', 'belastbar'],
+            
+            'Dark': [],
+
+            'Luminous': [],
+
+            'Difficult': [],
+
+            'Easy': [],
+
+            'Evil': [],
+
+            'Benign': [],
+
+            'Faded': [],
+
+            'Bright': [],
+
+            'Feeble': [],
+
+            'Strong': [],
+            'Masculine': [],
+
+            'Feminine': [],
+
+            'Passive': [],
+
+            'Active': [],
+
+            'Quiet': [],
+            
+            'Loud': [],
+
+            'Rough': [],
+
+            'Tender': [],
+            
+            'Sad': [],
+            
+            'Joyful': [],
+            
+            'Short': [],
+
+            'Long':[],
+
+            'Slow': [],
+            
+            'Quick': [],
+
+            'Small': [],
+
+            'Big': [],
+
+            'Smooth': [],
+
+            'Rough_or_not_smooth': [],
+
+            'Ugly': [],
+
+            'Beautiful': []}
