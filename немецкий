@@ -23,61 +23,62 @@ synonyms = {'Angular': ['eckig', 'winkelig', 'facettiert', 'gerippt', 'scharfkan
 
             'Secure': ['zuverlässig', 'robust', 'verläßlich', 'solid', 'risikofrei', 'bewährt', 'ungefährlich', 'gefahrlos', 'risikolos', 'unschädlich', 'geschützt', 'sicher', 'belastbar'],
             
-            'Dark': [],
+            'Dark': ['finster', 'düster', 'trist', 'trübsinnig', 'schwermütig', 'trübselig', 'makaber', 'schwarz', 'trüb', 'dämmerig', 'bewölkt', 'dunstig', 'verhangen', 'dumpf', 'gedämpft', 'braun', 'obskur', 'zwielichtig', 'Dunkel', 'Dunkelheit', 'Düsterkeit', 'Finsternis', 'Nacht', 'Schwärze', 'dunkel', 'lichtundurchlässig'],
 
-            'Luminous': [],
+            'Luminous': ['funkelnd', 'strahlend', 'glänzend', 'gleißend', 'blitzend', 'blendend', 'hellglänzend', 'hochglänzend', 'glitzerig', 'helleuchtend', 'freudestrahlend', 'sonnig', 'blank', 'hell', 'grell', 'saftig'],
 
-            'Difficult': [],
+            'Difficult': ['kompliziert', 'komplex', 'diffizil', 'vielschichtig', 'verschachtelt', 'schwer', 'hart', 'schlimm', 'schwerwiegend', 'streng', 'verzwickt', 'verworren', 'verwickelt', 'verwirrt', 'anstrengend', 'beschwerlich', 'mühselig'],
 
-            'Easy': [],
+            'Easy': ['leicht', 'simpel', 'primitiv', 'elementar', 'prim', 'einfach', 'schlicht', 'halt'],
 
-            'Evil': [],
+            'Evil': ['Übel', 'Schlechtigkeit', 'Dämon', 'Teufel', 'Satan', 'Unhold', 'Luzifer', 'Widersacher', 'Diabolus', 'Missetat', 'Wut', 'erbittert', 'erbost', 'böse', 'Böse', 'Böses', 'arg', 'bitterböse', 'boshaft', 'bösartig', 'feindlich'],
 
-            'Benign': [],
+            'Benign': ['gut', 'barmherzig', 'hilfsbereit', 'gutartig', 'gnädig', 'gutherzig', 'gutmütig', 'gütig', 'herzensgut', 'warmherzig', 'weichherzig', 'wohltätig', 'benigne', 'freundlich', 'reichlich', 'günstig', 'richtig', 'ehrlich'],
 
-            'Faded': [],
+            'Faded': ['Verblichene', 'verblaßt', 'fahl', 'verwaschen', 'blaß', 'bleich', 'verschossen', 'welk', 'verwelkt', 'verblassen', 'ausbleichen', 'verfärben', 'bleichen', 'erbleichen'],
 
-            'Bright': [],
+            'Bright': ['leuchtend', 'grell', 'glänzend', 'strahlend', 'blank', 'farbenfroh', 'farbig', 'lebhaft', 'farbenprächtig', 'farbenfreudig', 'hellfarbig', 'markant', 'blendend', 'hell', 'beleuchtet'],
 
-            'Feeble': [],
+            'Feeble': ['schwächlich', 'gebrechlich', 'schmächtig', 'verkümmert', 'altersschwach', 'krank', 'kraftlos', 'schwach', 'krankhaft', 'schmerzvoll', 'schmerzlich', 'morbid', 'mickrig', 'siech'],
 
-            'Strong': [],
-            'Masculine': [],
-
-            'Feminine': [],
-
-            'Passive': [],
-
-            'Active': [],
-
-            'Quiet': [],
+            'Strong': ['kräftig', 'kraftvoll', 'intensiv', 'machtvoll', 'leistungsstark', 'leistungsfähig', 'hochleistungsfähig'],
             
-            'Loud': [],
+            'Masculine': ['Maskulin', 'viril', 'männlich', 'mannhaft'],
 
-            'Rough': [],
+            'Feminine': ['Weiblich', 'feminin', 'fraulich', 'frauenhaft', 'unmännlich'],
 
-            'Tender': [],
+            'Passive': ['inaktiv', 'passivisch', 'untätig', 'inert', 'passiv', 'unbeteiligt', 'desinteressiert', 'apathisch', 'teilnahmslos', 'träge'],
+
+            'Active': ['tätig', 'handelnd', 'wirksam', 'eingesetzt', 'effektiv', 'effizient', 'wirkungsvoll', 'tatkräftig', 'rührig', 'betriebsam', 'tuend', 'energisch', 'Aktiv', 'dynamisch', 'munter', 'quirlig', 'schwungvoll'],
+
+            'Quiet': ['ruhig', 'still', 'geräuschlos', 'sacht', 'halblaut', 'leise', 'flüsternd', 'im', 'Flüsterton', 'heimlich', 'lautlos','nichtlaut', 'tonlos', 'leisen', 'tuscheln', 'klanglos', 'insgeheim'],
             
-            'Sad': [],
+            'Loud': ['lärmend', 'geräuschvoll', 'lärmig', 'hallend', 'tumultuarisch', 'lautstark', 'kreischend', 'schreiend', 'vorlaut', 'klangvoll', 'wohlklingend', 'rauschend', 'tosend', 'marktschreierisch', 'reißerisch', 'Geräusch', 'Schall', 'laut', 'dröhnend', 'lauthals', 'schallend', 'forte'],
+
+            'Rough': ['roh', 'gröblich', 'unsanft', 'ruppig', 'derb', 'ungehobelt', 'grobschlächtig', 'ordinär', 'ungeschliffen', 'klobig', 'rüpelhaft', 'ausfallend', 'rücksichtslos', 'grob', 'brutal', 'heftig', 'rüde', 'unfreundlich'],
+
+            'Tender': ['weich', 'mild', 'soft', 'gelind', 'gepolstert', 'zärtlich', 'liebevoll', 'sacht', 'sanft', 'freundlich', 'großmütig', 'gut', 'gutherzig', 'gutmütig', 'gütig', 'herzlich', 'liebenswürdig'],
             
-            'Joyful': [],
+            'Sad': ['betrübt', 'wehmütig', 'schwermütig', 'melancholisch', 'trübsinnig', 'unlustig', 'sehnsüchtig', 'beklemmend', 'elegisch', 'trostlos', 'trist', 'trübselig', 'bedauerlich', 'betrüblich', 'herzzerreißend', 'traurig', 'bedrückt', 'depressiv', 'deprimiert', 'niedergeschlagen', 'bekümmert', 'düster'],
             
-            'Short': [],
-
-            'Long':[],
-
-            'Slow': [],
+            'Joyful': ['fröhlich', 'vergnügt', 'freudvoll', 'froh', 'erfreulich', 'ausgelassen', 'selig', 'munter', 'sonnig', 'lebenslustig', 'frohgemut', 'jovial', 'spritzig', 'festlich', 'lustig', 'vergnüglich', 'amüsant', 'Freudig', 'charmant', 'gefällig', 'freudig', 'Freude', 'erfüllt', 'aufheitern', 'beglücken', 'freuen', 'Heiterkeit', 'unterhalten', 'vergnügen'],
             
-            'Quick': [],
+            'Short': ['kürzer', 'kurzzeitig', 'minutenlang', 'flüchtig', 'kurzfristig', 'knapp', 'klein', 'leicht', 'verkürzt', 'kurz', 'wenigen', 'lakonisch', 'augenblicklich', 'kurze'],
 
-            'Small': [],
+            'Long':['lang', 'endlos', 'ewig', 'gedehnt', 'jahrelang', 'langfristig', 'langjährig', 'langwierig', 'tagelang', 'unendlich', 'wochenlang', 'weit'],
 
-            'Big': [],
+            'Slow': ['gemächlich', 'bedächtig', 'schleppend', 'schleichend', 'behäbig', 'umständlich', 'schläfrig', 'säumig', 'langsam', 'gemütlich', 'geruhsam'],
+            
+            'Quick': ['rasch', 'zügig', 'prompt', 'baldig', 'quick', 'effizient', 'operativ', 'taktisch', 'rapide', 'kurzerhand', 'schleunigst', 'schnellstens', 'sofort', 'schnell', 'geschwind', 'hurtig', 'dringend', 'fix'],
 
-            'Smooth': [],
+            'Small': ['winzig', 'zierlich', 'miniaturisiert', 'schmal', 'gering', 'mittelgroß', 'wenig', 'mäßig', 'minimal', 'geringfügig', 'geringer', 'klein', 'dünn'],
 
-            'Rough_or_not_smooth': [],
+            'Big': ['größer', 'hoch', 'lang', 'groß', 'gewaltig', 'stark', 'kräftig'],
 
-            'Ugly': [],
+            'Smooth': ['Glatt', 'flach', 'gleichmäßig', 'gerade', 'eben', 'geradlinig', 'faltenlos', 'glatt'],
 
-            'Beautiful': []}
+            'Rough_or_not_smooth': ['kratzig', 'spröde', 'ungeschliffen', 'unpoliert', 'schroff'],
+
+            'Ugly': ['scheußlich', 'ekelhaft', 'unförmig', 'widerlich', 'unschön', 'abscheulich', 'widerwärtig', 'abstoßend', 'eklig', 'gräßlich', 'ekelerregend', 'stinkend', 'monströs', 'ungestaltet', 'schrecklich', 'schauderhaft', 'garstig', 'hässlich', 'unansehnlich', 'ungestalt', 'unästhetisch', 'unvorteilhaft', 'widrig', 'entstellt', 'fürchterlich', 'grauenhaft', 'grässlich', 'missgestaltet', 'reizlos', 'verunstaltet'],
+
+            'Beautiful': ['Schön', 'wunderschön', 'herrlich', 'phantastisch', 'hübsch', 'lieb', 'nett', 'niedlich', 'schick', 'elegant', 'rot', 'schmuckvoll', 'prächtig', 'prachtvoll', 'lieblich', 'malerisch', 'anmutig', 'herausgeputzt', 'schön', 'hinreißend', 'stilvoll', 'ästhetisch', 'attraktiv', 'bildschön', 'großartig', 'makellos', 'reizvoll', 'wundervoll']}
