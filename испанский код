@@ -11,21 +11,21 @@ FILE = r"C:\Users\User\Desktop\вектор 2\cc.es.300.vec"
 def load_vectors(fname):
     fin = io.open(fname, 'r', encoding='utf-8', newline='\n', errors='ignore')
     data = {}
+    i = 0
     for line in fin:
-        tokens = line.rstrip().split(' ')
-        try:
+        if i < 50000:
+            tokens = line.rstrip().split(' ')
             data[tokens[0]] = np.array(list(map(float, np.array(tokens[1:]))))
-        except:
-            #pass
-            print(line)
+            i += 1
+        else:
+            break
     return data
-
 
 
 word2vec = load_vectors(FILE)
 
-#удалить снизу
-#word2vec_es = {}
+# удалить снизу
+# word2vec_es = {}
 # k = 0
 # for key, value in word2vec.items():
 #     if k < 50000:
@@ -33,41 +33,43 @@ word2vec = load_vectors(FILE)
 #     k = k + 1
 # print(len(word2vec_es))
 # word2vec = word2vec_es
-#удалить сверху
+# удалить сверху
 
 synonyms = {'Angular': ['anguloso', 'oblicuo', 'sesgado', 'esquinado', 'abierto', 'cerrado', 'torpe'],
 
             'Round': ['esférico', 'anular', 'redondeado', 'esferoidal', 'elíptico', 'orondo', 'convexo',
-                        'abombado', 'curvo', 'curvado', 'cóncavo', 'oval'],
+                      'abombado', 'curvo', 'curvado', 'cóncavo', 'oval'],
 
+            'Bad': ['diabólico', 'infernal', 'maléfico', 'maldito', 'rematado', 'virulento', 'rencoroso',
+                    'extremista', 'ruin', 'infame', 'vil', 'inicuo', 'bajo', 'innoble', 'injusto', 'bellaco',
+                    'villano', 'bribón', 'criminal', 'malandrín', 'sinvergüenza', 'insolente', 'imprudente',
+                    'perverso', 'maligno', 'malicioso', 'depravado', 'vicioso', 'inmoral', 'deshonesto', 'indecente',
+                    'pérfido', 'fementido', 'doliente', 'paciente', 'indispuesto', 'quejumbroso', 'delicado',
+                    'afectado',
+                    'achacoso', 'acometido', 'aquejado', 'contagiado', 'convaleciente', 'infectado', 'nocivo', 'dañino',
+                    'perjudicial', 'peligroso', 'desfavorable', 'dañoso', 'pernicioso', 'aciago', 'funesto', 'nefasto',
+                    'infausto', 'catastrófico', 'calamitoso', 'malhadado', 'estropeado', 'usado', 'viejo',
+                    'deteriorado',
+                    'inservible', 'dañado', 'roto', 'deslucido', 'travieso', 'revoltoso', 'enredador', 'desobediente',
+                    'inquieto', 'repelente', 'execrable', 'detestable', 'odioso', 'pésimo', 'fastidioso', 'molesto',
+                    'antipático', 'desagradable', 'imperfecto', 'inferior', 'defectuoso', 'tosco', 'incorrecto',
+                    'malcriado',
+                    'incompleto', 'trabajoso', 'dificultoso', 'difícil', 'penoso', 'ingrato', 'lamentable', 'cruel',
+                    'riguroso',
+                    'insensible', 'inhumano'],
 
-            'Bad':  ['diabólico', 'infernal', 'maléfico', 'maldito', 'rematado', 'virulento', 'rencoroso',
-                     'extremista', 'ruin', 'infame', 'vil', 'inicuo', 'bajo', 'innoble', 'injusto', 'bellaco',
-                     'villano', 'bribón', 'criminal', 'malandrín', 'sinvergüenza', 'insolente', 'imprudente',
-                     'perverso', 'maligno', 'malicioso', 'depravado', 'vicioso', 'inmoral', 'deshonesto', 'indecente',
-                     'pérfido', 'fementido', 'doliente', 'paciente', 'indispuesto', 'quejumbroso', 'delicado', 'afectado',
-                     'achacoso', 'acometido', 'aquejado', 'contagiado', 'convaleciente', 'infectado', 'nocivo', 'dañino',
-                     'perjudicial', 'peligroso', 'desfavorable', 'dañoso', 'pernicioso', 'aciago', 'funesto', 'nefasto',
-                     'infausto', 'catastrófico', 'calamitoso', 'malhadado', 'estropeado', 'usado', 'viejo', 'deteriorado',
-                     'inservible', 'dañado', 'roto', 'deslucido', 'travieso', 'revoltoso', 'enredador', 'desobediente',
-                     'inquieto', 'repelente', 'execrable', 'detestable', 'odioso', 'pésimo', 'fastidioso', 'molesto',
-                     'antipático', 'desagradable', 'imperfecto', 'inferior', 'defectuoso', 'tosco', 'incorrecto', 'malcriado',
-                     'incompleto', 'trabajoso', 'dificultoso', 'difícil', 'penoso', 'ingrato', 'lamentable', 'cruel', 'riguroso',
-                     'insensible', 'inhumano'],
+            'Good': ['humano', 'caritativo', 'compasivo', 'piadoso', 'bienhechor', 'misericordioso', 'clemente',
+                     'sensible', 'desprendido', 'generoso', 'sacrificado', 'benévolo', 'benigno', 'bondadoso',
+                     'indulgente', 'comprensivo', 'virtuoso', 'honesto', 'afable', 'servicial', 'agradable',
+                     'afectuoso', 'divertido', 'cordial', 'tierno', 'cándido', ' simple', 'bonachón', 'inocente',
+                     'crédulo', 'buenazo', 'provechoso', 'ventajoso', 'beneficioso', 'valioso', 'fructuoso',
+                     'productivo', 'adecuado', 'conveniente', 'utilizable', 'servible', 'favorable', 'propicio',
+                     'justo', 'estricto', 'exacto', 'riguroso', 'excelente', 'óptimo', 'grande', 'elevado',
+                     'distinguido', 'escogido'],
 
-            'Good':  ['humano', 'caritativo', 'compasivo', 'piadoso', 'bienhechor', 'misericordioso', 'clemente',
-                      'sensible', 'desprendido', 'generoso', 'sacrificado', 'benévolo', 'benigno', 'bondadoso',
-                      'indulgente', 'comprensivo', 'virtuoso', 'honesto', 'afable', 'servicial', 'agradable',
-                      'afectuoso', 'divertido', 'cordial', 'tierno', 'cándido', ' simple', 'bonachón', 'inocente',
-                      'crédulo', 'buenazo', 'provechoso', 'ventajoso', 'beneficioso', 'valioso', 'fructuoso',
-                      'productivo', 'adecuado', 'conveniente', 'utilizable', 'servible', 'favorable', 'propicio',
-                      'justo', 'estricto', 'exacto', 'riguroso', 'excelente', 'óptimo', 'grande', 'elevado',
-                      'distinguido', 'escogido'],
-
-            'Cold':  ['fresco', ' frescura', 'frescor', 'frialdad', 'Gélido', 'gélido', 'glacial', 'helado',
-                      'Enfriado', 'enfriado', 'refrigerado', 'congelado', 'frígido', 'desapasionado', 'insensible',
-                      'indiferente', 'desafecto', 'apático', 'desapegado', 'impasible', 'sereno', 'imperturbable'],
-
+            'Cold': ['fresco', ' frescura', 'frescor', 'frialdad', 'Gélido', 'gélido', 'glacial', 'helado',
+                     'Enfriado', 'enfriado', 'refrigerado', 'congelado', 'frígido', 'desapasionado', 'insensible',
+                     'indiferente', 'desafecto', 'apático', 'desapegado', 'impasible', 'sereno', 'imperturbable'],
 
             'Hot': ['ardor', 'entusiasmo', 'pasión', 'fervor', 'vehemencia', ' excitación', 'energía', 'vivacidad',
                     'dinamismo', 'viveza', 'fuego', 'combustión', 'quemazón', ' acaloramiento', 'encendimiento',
@@ -75,185 +77,212 @@ synonyms = {'Angular': ['anguloso', 'oblicuo', 'sesgado', 'esquinado', 'abierto'
                     'caloría', 'sudor', 'calentamiento', 'calefacción', 'calorífero', 'temperatura', 'fiebre',
                     'calentura', 'bochorno', 'canícula', 'sol', 'insolación'],
 
+            'Complex': ['complicado', 'difícil', 'dificultoso', 'enmarañado', 'enredado', 'espinoso', 'intrincado',
+                        'profundo', 'engorroso', 'enrevesado', 'compuesto', 'múltiple', 'variado', 'diverso'],
 
-            'Complex':  ['complicado', 'difícil', 'dificultoso', 'enmarañado', 'enredado', 'espinoso', 'intrincado',
-                         'profundo', 'engorroso', 'enrevesado', 'compuesto', 'múltiple', 'variado', 'diverso'],
+            'Simple': ['necio', 'estúpido', 'sandio', 'atontado', 'torpe', 'inepto', 'negado', 'pollino', 'papamoscas',
+                       'pánfilo', 'melón', 'simplemente', 'mero', 'sólo', 'sencillo', 'llano', 'natural', 'ingenuo',
+                       'cándido', 'inocente', 'crédulo', 'incauto', 'infeliz', 'menguado', 'de buena fe', 'fácil',
+                       'baladí', 'trivial', 'fútil', 'frívolo', 'superficial', 'simplón'],
 
+            'Cowardly': ['temeroso', 'asustadizo', 'aprensivo', 'receloso', 'medroso', 'timorato', 'miedoso',
+                         'atemorizado', 'pusilánime', 'tímido', 'irresoluto', 'turbado', 'vacilante', 'tembloroso',
+                         'apocado', 'timorato', 'encogido '],
 
-            'Simple':  ['necio', 'estúpido', 'sandio', 'atontado', 'torpe', 'inepto', 'negado', 'pollino', 'papamoscas',
-                        'pánfilo', 'melón', 'simplemente', 'mero', 'sólo', 'sencillo', 'llano', 'natural', 'ingenuo',
-                        'cándido', 'inocente', 'crédulo', 'incauto', 'infeliz', 'menguado', 'de buena fe', 'fácil',
-                        'baladí', 'trivial', 'fútil', 'frívolo', 'superficial', 'simplón'],
+            'Brave': ['animoso', 'esforzado', 'valeroso', 'bizarro', 'varonil', 'impávido', 'estoico', 'impertérrito',
+                      'imperturbable', 'inconmovible', 'osado', 'temerario', 'audaz', 'atrevido', 'decidido',
+                      'resuelto', 'determinado', 'especial', 'intrépido', 'denodado', 'arrojado', 'arriesgado',
+                      'ardido', 'épico', 'heroico', 'cid', 'paladín', 'héroe', 'perdonavidas', 'fanfarrón', 'bravucón',
+                      'baladrón', 'valentón', 'majo', 'matón', 'matasiete', 'guapo', 'jactancioso', ' fantasma',
+                      'jaque', 'pincho', 'gallo', 'guapetón', 'belicoso', 'aguerrido', 'pendenciero', 'agresivo',
+                      'indomable', 'bravío', 'invencible', 'enérgico', 'robusto', 'fuerte'],
 
-            'Cowardly':  ['temeroso', 'asustadizo', 'aprensivo', 'receloso', 'medroso', 'timorato', 'miedoso',
-                          'atemorizado', 'pusilánime', 'tímido', 'irresoluto', 'turbado', 'vacilante', 'tembloroso',
-                          'apocado', 'timorato', 'encogido '],
+            'Dangerous': ['aventurado', ' arriesgado', ' expuesto', ' atrevido', ' temerario', ' amenazador',
+                          ' alarmante',
+                          ' temible', ' ocasionado', ' inseguro', ' riesgoso'],
 
-            'Brave':  ['animoso', 'esforzado', 'valeroso', 'bizarro', 'varonil', 'impávido', 'estoico', 'impertérrito',
-                       'imperturbable', 'inconmovible', 'osado', 'temerario', 'audaz', 'atrevido', 'decidido',
-                       'resuelto', 'determinado', 'especial', 'intrépido', 'denodado', 'arrojado', 'arriesgado',
-                       'ardido', 'épico', 'heroico', 'cid', 'paladín', 'héroe', 'perdonavidas', 'fanfarrón', 'bravucón',
-                       'baladrón', 'valentón', 'majo', 'matón', 'matasiete', 'guapo', 'jactancioso', ' fantasma',
-                       'jaque', 'pincho', 'gallo', 'guapetón', 'belicoso', 'aguerrido', 'pendenciero', 'agresivo',
-                       'indomable', 'bravío', 'invencible', 'enérgico', 'robusto', 'fuerte'],
+            'Secure': ['cierre', 'garantía', 'fianza', 'seguridad', 'protegido', 'resguardado', 'defendido', 'salvo',
+                       'ileso', 'fiable', 'confiable', 'probado', 'fidedigno', 'estable', 'duradero', 'robusto',
+                       'sólido'],
 
-            'Dangerous':  ['aventurado', ' arriesgado', ' expuesto', ' atrevido', ' temerario', ' amenazador', ' alarmante',
-                           ' temible', ' ocasionado', ' inseguro', ' riesgoso'],
-
-            'Secure':  ['cierre', 'garantía', 'fianza', 'seguridad', 'protegido', 'resguardado', 'defendido', 'salvo',
-                        'ileso', 'fiable', 'confiable', 'probado', 'fidedigno', 'estable', 'duradero', 'robusto', 'sólido'],
-
-            'Dark': ['obscuro', 'sombrío', 'tenebroso', 'lúgubre', 'negro', 'tétrico', 'lóbrego', 'triste', 'malhumorado',
+            'Dark': ['obscuro', 'sombrío', 'tenebroso', 'lúgubre', 'negro', 'tétrico', 'lóbrego', 'triste',
+                     'malhumorado',
                      'hosco', 'pesimista', 'austero', 'fatídico', 'opaco', 'turbio'],
 
+            'Luminous': ['resplandeciente', 'brillante', 'refulgente', 'esplendente', 'esplendoroso', 'radiante',
+                         'claro',
+                         'lúcido', 'centelleante', 'fulgente', 'lumínico', 'lucífero', 'luminosamente', 'deslumbrante',
+                         'vívido', 'intenso', 'chispeante', 'brilloso', 'límpido', 'transparente', 'llamativo',
+                         'vistoso', 'decorativo'],
 
-            'Luminous':  ['resplandeciente', 'brillante', 'refulgente', 'esplendente', 'esplendoroso', 'radiante', 'claro',
-                          'lúcido', 'centelleante', 'fulgente', 'lumínico', 'lucífero', 'luminosamente', 'deslumbrante',
-                          'vívido', 'intenso', 'chispeante', 'brilloso', 'límpido', 'transparente', 'llamativo', 'vistoso', 'decorativo'],
+            'Difficult': ['problema', 'trance', 'conflicto', 'apuro', 'obstáculo', 'inconveniente', 'impedimento',
+                          'estorbo',
+                          'traba', 'barrera', 'valla', 'escollo', 'complejidad', 'obstrucción', 'obstáculo',
+                          'contratiempo',
+                          'complicación', 'desventaja', 'obstaculizar', 'impedir', 'entorpecer', 'complicar',
+                          'interferir',
+                          'obstruir', 'coartar', 'obstar', 'atascar', 'intervenir'],
 
+            'Easy': ['posible', 'factible', 'realizable', 'practicable', 'viable', 'accesible', 'sencillo', 'llano',
+                     'simple', 'natural', 'obvio', 'claro', 'evidente', 'manifiesto', 'elemental', 'inteligible',
+                     'comprensible', 'ligero', 'liviano', 'probable'],
 
-            'Difficult':  ['problema', 'trance', 'conflicto', 'apuro', 'obstáculo', 'inconveniente', 'impedimento', 'estorbo',
-                           'traba', 'barrera', 'valla', 'escollo', 'complejidad', 'obstrucción', 'obstáculo', 'contratiempo',
-                           'complicación', 'desventaja', 'obstaculizar', 'impedir', 'entorpecer', 'complicar', 'interferir',
-                           'obstruir', 'coartar', 'obstar', 'atascar', 'intervenir'],
-
-
-            'Easy':  ['posible', 'factible', 'realizable', 'practicable', 'viable', 'accesible', 'sencillo', 'llano',
-                      'simple', 'natural', 'obvio', 'claro', 'evidente', 'manifiesto', 'elemental', 'inteligible',
-                      'comprensible', 'ligero', 'liviano', 'probable'],
-
-
-            'Evil': ['inicuo', 'ruin', 'vil', 'bajo', 'infame', 'ignominioso', 'indigno', 'injusto', 'miserable', 'mezquino',
+            'Evil': ['inicuo', 'ruin', 'vil', 'bajo', 'infame', 'ignominioso', 'indigno', 'injusto', 'miserable',
+                     'mezquino',
                      'malandrín', 'criminal', 'villano', 'rufián', 'bribón', 'sinvergüenza', 'insolente', 'perverso',
-                     'maligno', 'malo', 'cruel', 'malévolo', 'malicioso', 'maldito', 'diabólico', 'infernal', 'maléfico',
-                     'réprobo', 'virulento', 'odioso', 'execrable', 'detestable', 'endemoniado', 'depravado', 'maldecido',
+                     'maligno', 'malo', 'cruel', 'malévolo', 'malicioso', 'maldito', 'diabólico', 'infernal',
+                     'maléfico',
+                     'réprobo', 'virulento', 'odioso', 'execrable', 'detestable', 'endemoniado', 'depravado',
+                     'maldecido',
                      'protervo', 'vicioso', 'dañino', 'terrible', 'siniestro'],
 
-            'Benign':  ['apacible', 'manso', 'bondadoso', 'benévolo', 'humano', 'clemente', 'piadoso', 'compasivo', 'pío',
-                        'generoso', 'magnánimo', 'delicado', 'afable', 'complaciente', 'afectuoso', 'agradable', 'cálido',
-                        'favorable', 'propicio', 'benevolente', 'blando', 'suave'],
+            'Benign': ['apacible', 'manso', 'bondadoso', 'benévolo', 'humano', 'clemente', 'piadoso', 'compasivo',
+                       'pío',
+                       'generoso', 'magnánimo', 'delicado', 'afable', 'complaciente', 'afectuoso', 'agradable',
+                       'cálido',
+                       'favorable', 'propicio', 'benevolente', 'blando', 'suave'],
 
+            'Faded': ['esfumado', 'evaporado', 'desaparecido', 'disipado', 'borroso', 'desteñido', 'vago', 'impreciso',
+                      'indefinido', 'confuso', 'desvaído', 'débil', 'apagado', 'descolorido', 'tenue', 'pálido',
+                      'inconsciente',
+                      'aturdido', 'turbado', 'arrogante', 'altivo', 'orgulloso', 'vano', 'presuntuoso', 'presumido',
+                      'resaltado', 'realzado', 'subrayado', 'humilde', 'modesto', 'definido', 'preciso', 'recobrado',
+                      'reanimado', 'palidecido', 'aclarado', 'borrado', 'suprimido', 'anulado', 'frustrado', 'atenuado',
+                      'disimulado', 'deshecho', 'disgregado', 'disuelto', 'difuminado', 'desdibujado', 'diluido',
+                      'desmayado',
+                      'desterrar', 'echar', 'expulsar', 'diseminar'],
 
+            'Bright': ['reluciente', 'lustroso', 'resplandeciente', 'brilloso', 'luminoso', 'chispeante', 'dorado',
+                       'refulgente', 'radiante', 'fulgurante', 'esplendente', 'luciente', 'deslumbrante', 'vívido',
+                       'intenso', 'impresionante', 'expresivo', 'gráfico', 'fúlgido', 'centelleante', 'esplendoroso',
+                       'joya', 'gema', 'diamante', 'lúcido', 'lúcido', 'genial', 'flamante', 'nítido', 'cegador',
+                       'sobresaliente', 'destacado', 'señalado', 'predominante', 'distinguido', 'ilustre', 'admirable',
+                       'espléndido'],
 
-            'Faded':  ['esfumado', 'evaporado', 'desaparecido', 'disipado', 'borroso', 'desteñido', 'vago', 'impreciso',
-                       'indefinido', 'confuso', 'desvaído', 'débil', 'apagado', 'descolorido', 'tenue', 'pálido', 'inconsciente',
-                       'aturdido', 'turbado', 'arrogante', 'altivo', 'orgulloso', 'vano', 'presuntuoso', 'presumido',
-                       'resaltado', 'realzado', 'subrayado', 'humilde', 'modesto', 'definido', 'preciso', 'recobrado',
-                       'reanimado', 'palidecido', 'aclarado', 'borrado', 'suprimido', 'anulado', 'frustrado', 'atenuado',
-                       'disimulado', 'deshecho', 'disgregado', 'disuelto', 'difuminado', 'desdibujado', 'diluido', 'desmayado',
-                       'desterrar', 'echar', 'expulsar', 'diseminar'],
+            'Feeble': ['endeble', 'canijo', 'enclenque', 'frágil', 'enfermizo', 'enfermo', 'alfeñique', 'blandengue',
+                       'flaco', 'escuálido', 'anémico', 'laxo', 'exangüe', 'gastado', 'exhausto', 'cansado',
+                       'debilitado',
+                       'extenuado', 'agotado', 'menesteroso', 'lánguido', 'triste', 'blando', 'flojo', 'apático',
+                       'tenue',
+                       'apocado', 'pusilánime', 'cobarde', 'timorato', 'encogido', 'vacilante', 'quebrado',
+                       'indefenso'],
 
+            'Strong': ['poderoso', 'potente', 'pujante', 'enérgico', 'alentado', 'profundo', 'hondo', 'firme', 'férreo',
+                       'inquebrantable', 'indestructible', 'esforzado', 'valiente', 'varonil', 'estoico', 'bizarro',
+                       'fornido',
+                       'forzudo', 'macizo', 'hercúleo', 'nervudo', 'fortachón', 'musculoso', 'atlético', 'impetuoso',
+                       'ardoroso',
+                       'imponente', 'gigantesco', 'formidable', 'intenso', 'invencible', 'invulnerable', 'agudo',
+                       'acérrimo',
+                       'consistente', 'robusto', 'recio', 'sólido', 'resistente'],
 
-            'Bright':  ['reluciente', 'lustroso', 'resplandeciente', 'brilloso', 'luminoso', 'chispeante', 'dorado',
-                        'refulgente', 'radiante', 'fulgurante', 'esplendente', 'luciente', 'deslumbrante', 'vívido',
-                        'intenso', 'impresionante', 'expresivo', 'gráfico', 'fúlgido', 'centelleante', 'esplendoroso',
-                        'joya', 'gema', 'diamante', 'lúcido', 'lúcido', 'genial', 'flamante', 'nítido', 'cegador',
-                        'sobresaliente', 'destacado', 'señalado', 'predominante', 'distinguido', 'ilustre', 'admirable', 'espléndido'],
+            'Masculine': ['varonil', 'viril', 'macho', 'fuerte', 'enérgico', 'vigoroso', 'recio', 'valiente',
+                          'hombruno', 'hombre', 'varón'],
 
+            'Feminine': ['femenil', 'afeminado'],
 
-            'Feeble':  ['endeble', 'canijo', 'enclenque', 'frágil', 'enfermizo', 'enfermo', 'alfeñique', 'blandengue',
-                        'flaco', 'escuálido', 'anémico', 'laxo', 'exangüe', 'gastado', 'exhausto', 'cansado', 'debilitado',
-                        'extenuado', 'agotado', 'menesteroso', 'lánguido', 'triste', 'blando', 'flojo', 'apático', 'tenue',
-                        'apocado', 'pusilánime', 'cobarde', 'timorato', 'encogido', 'vacilante', 'quebrado', 'indefenso'],
+            'Active': ['dinámico', 'eficiente', 'eficaz', 'empleado', 'productivo', 'directo', 'operativo',
+                       'reproductivo', 'enérgico', 'vigoroso', 'militante', 'potente', 'emprendedor', 'intenso',
+                       'intensivo', 'accionar', 'mover', 'diligente', 'laborioso', 'afanoso', 'solícito', 'poderoso',
+                       'vivaz', 'entusiasta', 'pronto', 'rápido', 'ágil', 'apresurado', 'vivo', 'movilizó'],
 
-
-            'Strong':  ['poderoso', 'potente', 'pujante', 'enérgico', 'alentado', 'profundo', 'hondo', 'firme', 'férreo',
-                        'inquebrantable', 'indestructible', 'esforzado', 'valiente', 'varonil', 'estoico', 'bizarro', 'fornido',
-                        'forzudo', 'macizo', 'hercúleo', 'nervudo', 'fortachón', 'musculoso', 'atlético', 'impetuoso', 'ardoroso',
-                        'imponente', 'gigantesco', 'formidable', 'intenso', 'invencible', 'invulnerable', 'agudo', 'acérrimo',
-                        'consistente', 'robusto', 'recio', 'sólido', 'resistente'],
-
-            'Masculine':  ['varonil', 'viril', 'macho', 'fuerte', 'enérgico', 'vigoroso', 'recio', 'valiente', 'hombruno', 'hombre', 'varón'],
-
-            'Feminine':  ['femenil', 'afeminado'],
-
-
-            'Active':  ['dinámico', 'eficiente', 'eficaz', 'empleado', 'productivo', 'directo', 'operativo',
-                        'reproductivo', 'enérgico', 'vigoroso', 'militante', 'potente', 'emprendedor', 'intenso',
-                        'intensivo', 'accionar', 'mover', 'diligente', 'laborioso', 'afanoso', 'solícito', 'poderoso',
-                        'vivaz', 'entusiasta', 'pronto', 'rápido', 'ágil', 'apresurado', 'vivo', 'movilizó'],
-
-            'Passive':  ['inactivo', 'apático', 'neutro', 'inerte', 'sedentario', 'ocioso', 'jubilatorio', 'pasivamente',
-                         'indiferente', 'insensible', 'neutral', 'impasible', 'tibio', 'inmóvil', 'estático', 'quieto',
-                         'indolente', 'holgazán', 'flojo', 'perezoso', 'contemplativo'],
-
+            'Passive': ['inactivo', 'apático', 'neutro', 'inerte', 'sedentario', 'ocioso', 'jubilatorio', 'pasivamente',
+                        'indiferente', 'insensible', 'neutral', 'impasible', 'tibio', 'inmóvil', 'estático', 'quieto',
+                        'indolente', 'holgazán', 'flojo', 'perezoso', 'contemplativo'],
 
             'Quiet': ['mudo', 'apacible', 'tranquilo', 'callado', 'sereno', 'taciturno', 'sosegado', 'quieto', 'quedó',
-                      'reposado', 'calmoso', 'sentado', 'plácido', 'pacífico', 'manso', 'tácito', 'ecuánime', 'sigiloso',
+                      'reposado', 'calmoso', 'sentado', 'plácido', 'pacífico', 'manso', 'tácito', 'ecuánime',
+                      'sigiloso',
                       'calmado', 'calmo', 'reservado'],
 
-            'Loud':  ['bullicioso', 'tumultuoso', 'estruendoso', 'estrepitoso', 'atronador', 'altisonante', 'clamoroso',
-                      'escandaloso', 'sonoro', 'fuerte', 'alto', 'estridente', 'rumoroso', 'alborotador', 'ensordecedor',
-                      'retumbante', 'rimbombante'],
+            'Loud': ['bullicioso', 'tumultuoso', 'estruendoso', 'estrepitoso', 'atronador', 'altisonante', 'clamoroso',
+                     'escandaloso', 'sonoro', 'fuerte', 'alto', 'estridente', 'rumoroso', 'alborotador', 'ensordecedor',
+                     'retumbante', 'rimbombante'],
 
-
-            'Rough': ['rugoso', 'rudo', 'tosco', 'basto', 'abrasivo', 'grueso', 'pelado', 'escabroso', 'grosero', 'burdo',
-                      'vulgar', 'malsonante', 'craso', 'afilado', 'desabrido', 'arisco', 'hosco', 'insociable', 'brusco',
+            'Rough': ['rugoso', 'rudo', 'tosco', 'basto', 'abrasivo', 'grueso', 'pelado', 'escabroso', 'grosero',
+                      'burdo',
+                      'vulgar', 'malsonante', 'craso', 'afilado', 'desabrido', 'arisco', 'hosco', 'insociable',
+                      'brusco',
                       'bronco', 'duro', 'riguroso', 'austero', 'rígido', 'severo', 'furioso', 'difícil', 'arduo'],
 
-            'Tender':  ['cariñoso', 'amoroso', 'afectuoso', 'acariciador', 'bondadoso', 'amable', 'cordial', 'blando',
-                        'delgado', 'sensible', 'sentimental', 'susceptible', 'impresionable', 'sensitivo', 'delicado',
-                        'compasivo', 'entrañable', 'afable', 'expresivo'],
+            'Tender': ['cariñoso', 'amoroso', 'afectuoso', 'acariciador', 'bondadoso', 'amable', 'cordial', 'blando',
+                       'delgado', 'sensible', 'sentimental', 'susceptible', 'impresionable', 'sensitivo', 'delicado',
+                       'compasivo', 'entrañable', 'afable', 'expresivo'],
 
-            'Sad':  ['afligido', 'apesadumbrado', 'cabizbajo', 'amargado', 'dolorido', 'apenado', 'abatido', 'desconcertado',
-                     'melancólico', 'tristón', 'nostálgico', 'lúgubre', 'sombrío', 'mustio', 'tétrico', 'lóbrego', 'tenebroso',
-                     'malhumorado', 'oscuro', 'luctuoso'],
+            'Sad': ['afligido', 'apesadumbrado', 'cabizbajo', 'amargado', 'dolorido', 'apenado', 'abatido',
+                    'desconcertado',
+                    'melancólico', 'tristón', 'nostálgico', 'lúgubre', 'sombrío', 'mustio', 'tétrico', 'lóbrego',
+                    'tenebroso',
+                    'malhumorado', 'oscuro', 'luctuoso'],
 
-            'Joyful':  ['jovial', 'risueño', 'juguetón', 'despreocupado', 'desenfadado', 'gozoso', 'jubiloso', 'regocijado',
-                        'esparcido', 'divertido', 'animado', 'festivo', 'feliz', 'dichoso', 'bueno', 'vivaz', 'regocijar',
-                        'deleitar', 'divertir', 'eufórico', 'radiante', 'vivaracho', 'humorista', 'gayo', 'gracioso', 'chistoso',
-                        'bromista'],
+            'Joyful': ['jovial', 'risueño', 'juguetón', 'despreocupado', 'desenfadado', 'gozoso', 'jubiloso',
+                       'regocijado',
+                       'esparcido', 'divertido', 'animado', 'festivo', 'feliz', 'dichoso', 'bueno', 'vivaz',
+                       'regocijar',
+                       'deleitar', 'divertir', 'eufórico', 'radiante', 'vivaracho', 'humorista', 'gayo', 'gracioso',
+                       'chistoso',
+                       'bromista'],
 
-            'Short':  ['breve', 'conciso', 'resumido', 'pequeño', 'mediano', 'chiquito', 'momentáneo', 'cercano', 'fugaz',
-                       'efímero', 'abreviado', 'lacónico', 'sucinto', 'insuficiente', 'incompleto', 'truncado', 'diminuto',
-                       'trozo', 'fragmento', 'divido', 'separo', 'cerceno', 'trunco', 'podo', 'atajo', 'hiendo'],
+            'Short': ['breve', 'conciso', 'resumido', 'pequeño', 'mediano', 'chiquito', 'momentáneo', 'cercano',
+                      'fugaz',
+                      'efímero', 'abreviado', 'lacónico', 'sucinto', 'insuficiente', 'incompleto', 'truncado',
+                      'diminuto',
+                      'trozo', 'fragmento', 'divido', 'separo', 'cerceno', 'trunco', 'podo', 'atajo', 'hiendo'],
 
-            'Long':['prolongado', 'crónico', 'continuo', 'sostenido', 'mantenido', 'longitud', 'largura', 'dilatación', 'prolongación',
-                    'largamente', 'alargado', 'difuso', 'continuado', 'encajo'],
+            'Long': ['prolongado', 'crónico', 'continuo', 'sostenido', 'mantenido', 'longitud', 'largura', 'dilatación',
+                     'prolongación',
+                     'largamente', 'alargado', 'difuso', 'continuado', 'encajo'],
 
-            'Slow':['tardo', 'paulatino', 'tardío', 'aletargado', 'soñoliento', 'silencioso', 'indolente', 'perezoso',
-                    'apático', 'pausado', 'parsimonioso', 'lánguido', 'flemático', 'calmoso', 'moroso', 'lerdo', 'flojo',
-                    'haragán', 'sosegado', 'reposado'],
+            'Slow': ['tardo', 'paulatino', 'tardío', 'aletargado', 'soñoliento', 'silencioso', 'indolente', 'perezoso',
+                     'apático', 'pausado', 'parsimonioso', 'lánguido', 'flemático', 'calmoso', 'moroso', 'lerdo',
+                     'flojo',
+                     'haragán', 'sosegado', 'reposado'],
 
             'Quick': ['rápidamente', 'velozmente', 'aprisa', 'ligeramente', 'prontamente', 'veloz', 'ágil', 'ligero',
-                      'liviano', 'instantáneo', 'presto', 'expeditivo', 'apresurado', 'presuroso', 'acelerado', 'urgente',
-                      'pronto', 'repentino', 'súbito', 'precipitado', 'momentáneo', 'fugaz', 'impetuoso', 'activo', 'dinámico'],
+                      'liviano', 'instantáneo', 'presto', 'expeditivo', 'apresurado', 'presuroso', 'acelerado',
+                      'urgente',
+                      'pronto', 'repentino', 'súbito', 'precipitado', 'momentáneo', 'fugaz', 'impetuoso', 'activo',
+                      'dinámico'],
 
             'Small': ['diminuto', 'minúsculo', 'chiquito', 'nimio', 'insignificante', 'ínfimo', 'liviano', 'corto',
-                      'sucinto', 'resumido', 'bajo', 'enano', 'exiguo', 'escaso', 'intrascendente', 'limitado', 'reducido'],
+                      'sucinto', 'resumido', 'bajo', 'enano', 'exiguo', 'escaso', 'intrascendente', 'limitado',
+                      'reducido'],
 
-            'Big':  ['gran', 'considerable', 'mayor', 'crecido', 'capaz', 'sustancioso', 'numeroso', 'abundante', 'alto',
-                     'elevado', 'espacioso', 'amplio', 'colosal', 'descomunal', 'enorme', 'gigantesco', 'inmenso', 'monstruoso',
-                     'fiero', 'ilimitado', 'infinito', 'inconmensurable', 'tremendo', 'ostentoso', 'ingente', 'monumental',
-                     'formidable', 'titánico', 'macanudo', 'abultado', 'voluminoso', 'corpulento', 'desmedido', 'exagerado',
-                     'excesivo', 'exorbitante', 'extenso', 'vasto', 'ancho', 'largo'],
+            'Big': ['gran', 'considerable', 'mayor', 'crecido', 'capaz', 'sustancioso', 'numeroso', 'abundante', 'alto',
+                    'elevado', 'espacioso', 'amplio', 'colosal', 'descomunal', 'enorme', 'gigantesco', 'inmenso',
+                    'monstruoso',
+                    'fiero', 'ilimitado', 'infinito', 'inconmensurable', 'tremendo', 'ostentoso', 'ingente',
+                    'monumental',
+                    'formidable', 'titánico', 'macanudo', 'abultado', 'voluminoso', 'corpulento', 'desmedido',
+                    'exagerado',
+                    'excesivo', 'exorbitante', 'extenso', 'vasto', 'ancho', 'largo'],
 
-
-            'Smooth':  ['alisado', 'pulido', 'aplanado', 'glabro', 'terso', 'lustroso', 'brillante', 'lacio', 'llano', 'igual'],
-
+            'Smooth': ['alisado', 'pulido', 'aplanado', 'glabro', 'terso', 'lustroso', 'brillante', 'lacio', 'llano',
+                       'igual'],
 
             'Rough_or_not_smooth': ['rugoso', 'tosco', 'abrasivo', 'escabroso', 'accidentado', 'abrupto', 'desigual',
                                     'desnivelado', 'irregular', 'desequilibrado', 'doblado', 'áspero'],
 
-
-            'Ugly': ['asqueroso', 'repugnante', 'detestable', 'odioso', 'hediondo', 'repulsivo', 'aborrecible', 'indecente',
-                     'abominable', 'inmundo', 'ingrato', 'execrable', 'antiestético', 'horrible', 'espantoso', 'horroroso',
+            'Ugly': ['asqueroso', 'repugnante', 'detestable', 'odioso', 'hediondo', 'repulsivo', 'aborrecible',
+                     'indecente',
+                     'abominable', 'inmundo', 'ingrato', 'execrable', 'antiestético', 'horrible', 'espantoso',
+                     'horroroso',
                      'atroz', 'desagradable'],
 
+            'Beautiful': ['bello', 'bonito', 'precioso', 'lindo', 'guapo', 'pintoresco', 'maravilloso', 'asombroso',
+                          'encantador', 'adorable', 'espléndido', 'magnífico', 'esplendoroso', 'exuberante', 'soberbio',
+                          'ideal', 'excelente', 'imponente', 'estupendo', 'admirable', 'fenomenal', 'agraciado',
+                          'estético',
+                          'primoroso', 'majo', 'elegante', 'atractivo', 'agradable']
 
-            'Beautiful':  ['bello', 'bonito', 'precioso', 'lindo', 'guapo', 'pintoresco', 'maravilloso', 'asombroso',
-                           'encantador', 'adorable', 'espléndido', 'magnífico', 'esplendoroso', 'exuberante', 'soberbio',
-                           'ideal', 'excelente', 'imponente', 'estupendo', 'admirable', 'fenomenal', 'agraciado', 'estético',
-                           'primoroso', 'majo', 'elegante', 'atractivo', 'agradable']
-
-}
-word2trans_es ={}
-with open(r"C:\Users\User\Desktop\вектор 2\es_ES.txt",'r', encoding='utf-8') as in_file:
+            }
+word2trans_es = {}
+with open(r"C:\Users\User\Desktop\вектор 2\es_ES.txt", 'r', encoding='utf-8') as in_file:
     for line in in_file.readlines():
         word = line.split()[0].strip()
         trans = line.split()[1].strip().replace('/', '').replace('ˈ', '').replace('.', '')
         word2trans_es[word] = trans
-#print(word2trans_es)
+# print(word2trans_es)
 
 with open("word2trans_es.pkl", "wb") as out_file:
     pickle.dump(word2trans_es, out_file, protocol=pickle.HIGHEST_PROTOCOL)
@@ -267,12 +296,11 @@ for item in synonyms.items():
             sum += np.array(list(word2vec[word]))
         except:
             pass
-            #print(word)
+            # print(word)
 
     axes2vec_es[item[0]] = sum
 
-
-#print(axes2vec)
+# print(axes2vec)
 with open("axes2vec_es.pkl", "wb") as out_file:
     pickle.dump(axes2vec_es, out_file, protocol=pickle.HIGHEST_PROTOCOL)
 
@@ -283,7 +311,7 @@ for word in word2vec.keys():
         word2vectrans_es[word] = (word2vec[word], word2trans_es[word])
     except:
         pass
-        #print(word)
+        # print(word)
 
 word2vectrans_es = {word: (np.array(list(vec)), trans)
                     for
@@ -293,48 +321,47 @@ word2vectrans_es = {word: (np.array(list(vec)), trans)
 
 with open("word2vectrans_es.pkl", "wb") as out_file:
     pickle.dump(word2vectrans_es, out_file, protocol=pickle.HIGHEST_PROTOCOL)
-#print(word2vectrans_es)
-
-phones_es = [ 'b','β', 'd', 'ð', 'f', 'ɡ', 'ɣ', 'ʝ', 'k', 'l', 'ʎ', 'm', 'ɱ', 'n', 'ɲ', 'ŋ', 'p', 'r', 'ɾ', 's', 'θ',
-          't', 'v', 'x', 'z', 'a', 'e', 'i', 'o', 'u', 'j', 'w', 'ñ', 'ts','tʃ', 'ɟʝ']
-
-with open("phones_es.pkl", "wb") as out_file:
-    pickle.dump(phones_es, out_file, protocol=pickle.HIGHEST_PROTOCOL)
-#print(phones_es)
-
+# print(word2vectrans_es)
 
 
 axis_es = {
-           'Angular - Round': (-(axes2vec_es['Angular']) + axes2vec_es['Round']),
-            'Bad - Good': (-(axes2vec_es['Bad']) + axes2vec_es['Good']),
-            'Cold - Hot': (-(axes2vec_es['Cold']) + axes2vec_es['Hot']),
-            'Complex - Simple': (-(axes2vec_es['Complex']) + axes2vec_es['Simple']),
-            'Cowardly - Brave': (-(axes2vec_es['Cowardly']) + axes2vec_es['Brave']),
-            'Dangerous - Secure': (-(axes2vec_es['Dangerous']) + axes2vec_es['Secure']),
-            'Dark - Luminous': (-(axes2vec_es['Dark']) + axes2vec_es['Luminous']),
-            'Difficult - Easy': (-(axes2vec_es['Difficult']) + axes2vec_es['Easy']),
-            'Evil - Benign': (-(axes2vec_es['Evil']) + axes2vec_es['Benign']),
-            'Faded - Bright': (-(axes2vec_es['Faded']) + axes2vec_es['Bright']),
-            'Feeble - Strong': (-(axes2vec_es['Feeble']) + axes2vec_es['Strong']),
-            'Masculine - Feminine': (-(axes2vec_es['Masculine']) + axes2vec_es['Feminine']),
-            'Passive - Active': (-(axes2vec_es['Passive']) + axes2vec_es['Active']),
-            'Quiet - Loud': (-(axes2vec_es['Quiet']) + axes2vec_es['Loud']),
-            'Rough - Tender': (-(axes2vec_es['Rough']) + axes2vec_es['Tender']),
-            'Sad - Joyful': (-(axes2vec_es['Sad']) + axes2vec_es['Joyful']),
-            'Short - Long': (-(axes2vec_es['Short']) + axes2vec_es['Round']),
-            'Slow - Quick': (-(axes2vec_es['Slow']) + axes2vec_es['Quick']),
-            'Small - Big': (-(axes2vec_es['Small']) + axes2vec_es['Big']),
-            'Smooth - Rough_or_not_smooth': (-(axes2vec_es['Smooth']) + axes2vec_es['Rough_or_not_smooth']),
-            'Ugly - Beautiful': (-(axes2vec_es['Ugly']) + axes2vec_es['Beautiful']),
+    'Angular - Round': (-(axes2vec_es['Angular']) + axes2vec_es['Round']),
+    'Bad - Good': (-(axes2vec_es['Bad']) + axes2vec_es['Good']),
+    'Cold - Hot': (-(axes2vec_es['Cold']) + axes2vec_es['Hot']),
+    'Complex - Simple': (-(axes2vec_es['Complex']) + axes2vec_es['Simple']),
+    'Cowardly - Brave': (-(axes2vec_es['Cowardly']) + axes2vec_es['Brave']),
+    'Dangerous - Secure': (-(axes2vec_es['Dangerous']) + axes2vec_es['Secure']),
+    'Dark - Luminous': (-(axes2vec_es['Dark']) + axes2vec_es['Luminous']),
+    'Difficult - Easy': (-(axes2vec_es['Difficult']) + axes2vec_es['Easy']),
+    'Evil - Benign': (-(axes2vec_es['Evil']) + axes2vec_es['Benign']),
+    'Faded - Bright': (-(axes2vec_es['Faded']) + axes2vec_es['Bright']),
+    'Feeble - Strong': (-(axes2vec_es['Feeble']) + axes2vec_es['Strong']),
+    'Masculine - Feminine': (-(axes2vec_es['Masculine']) + axes2vec_es['Feminine']),
+    'Passive - Active': (-(axes2vec_es['Passive']) + axes2vec_es['Active']),
+    'Quiet - Loud': (-(axes2vec_es['Quiet']) + axes2vec_es['Loud']),
+    'Rough - Tender': (-(axes2vec_es['Rough']) + axes2vec_es['Tender']),
+    'Sad - Joyful': (-(axes2vec_es['Sad']) + axes2vec_es['Joyful']),
+    'Short - Long': (-(axes2vec_es['Short']) + axes2vec_es['Round']),
+    'Slow - Quick': (-(axes2vec_es['Slow']) + axes2vec_es['Quick']),
+    'Small - Big': (-(axes2vec_es['Small']) + axes2vec_es['Big']),
+    'Smooth - Rough_or_not_smooth': (-(axes2vec_es['Smooth']) + axes2vec_es['Rough_or_not_smooth']),
+    'Ugly - Beautiful': (-(axes2vec_es['Ugly']) + axes2vec_es['Beautiful']),
 }
 with open("axis_es.pkl", "wb") as out_file:
     pickle.dump(axis_es, out_file, protocol=pickle.HIGHEST_PROTOCOL)
-#print(axis_es)
+# print(axis_es)
+
+phones_es = ['b', 'β', 'd', 'ð', 'f', 'ɡ', 'ɣ', 'ʝ', 'k', 'l', 'ʎ', 'm', 'ɱ', 'n', 'ɲ', 'ŋ', 'p', 'r', 'ɾ', 's', 'θ',
+             't', 'v', 'x', 'z', 'a', 'e', 'i', 'o', 'u', 'j', 'w', 'ñ', 'ts', 'tʃ', 'ɟʝ']
+
+with open("phones_es.pkl", "wb") as out_file:
+    pickle.dump(phones_es, out_file, protocol=pickle.HIGHEST_PROTOCOL)
+# print(phones_es)
+# print(len(word2vectrans_es))
 
 with open("word2vectrans_es.pkl", "rb") as out_file:
     word2vectrans_es = pickle.load(out_file)
 
-#print(len(word2vectrans_es))
 sound2word_es = {}
 
 for sound in phones_es:
@@ -344,13 +371,14 @@ for sound in phones_es:
     for word, (vec, phones) in word2vectrans_es.items():
         transcription = phones
         if transcription[0] == sound:
+            #print(transcription[0])
             first_sound_es.append(word)
         elif sound in transcription:
             with_sound_es.append(word)
         else:
             without_sound_es.append(word)
     sound2word_es[sound] = (first_sound_es, with_sound_es, without_sound_es)
-#print(sound2word_es)
+# print(sound2word_es)
 
 cos_vec = {}
 sum_vec = 0
@@ -372,76 +400,77 @@ for sound in phones_es:
                 cosine_between_vectors = np.dot(vec, axes)
                 cosine_list.append(cosine_between_vectors)
             axes_distributions.append(cosine_list)
-        print('{} - {} Dist lens: {} {} {} Sum: {}'.format(sound, axes_name,
-                                                           len(axes_distributions[0]), len(axes_distributions[1]),
-                                                           len(axes_distributions[2]),
-                                                           len(axes_distributions[0]) + len(axes_distributions[1]) + len(axes_distributions[2])
-                                                           ))
+        # print('{} - {} Dist lens: {} {} {} Sum: {}'.format(sound, axes_name,
+        #                                                    len(axes_distributions[0]), len(axes_distributions[1]),
+        #                                                    len(axes_distributions[2]),
+        #                                                    len(axes_distributions[0]) + len(axes_distributions[1]) + len(axes_distributions[2])
+        #                                                    ))
         projection_axis_es[sound][axes_name] = axes_distributions
 
 with open("projection_axis_es.pkl", "wb") as out_file:
     pickle.dump(projection_axis_es, out_file, protocol=pickle.HIGHEST_PROTOCOL)
 
-# with open('results.csv', 'w', newline='', encoding='utf8') as csv_file:
-#     fieldnames = ['phone', 'axes', 'first_with', 'with_without', 'first_without']
-#     csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-#     csv_writer.writeheader()
-#     for phone, axis in projection_axis_es.items():
-#         for axes_name, distributions in axis.items():
-#             first_sound = distributions[0]
-#             with_sound = distributions[1]
-#             without_sound = distributions[2]
-#
-#             f_w = 1.0
-#             w_wo = 1.0
-#             wo_f = 1.0
-#             if len(first_sound) > 100 and len(with_sound) > 100:
-#                 f_w = stats.mannwhitneyu(first_sound, with_sound)[1]
-#             if len(with_sound) > 100 and len(without_sound) > 100:
-#                 w_wo = stats.mannwhitneyu(with_sound, without_sound)[1]
-#             if len(without_sound) > 100 and len(first_sound) > 100:
-#                 wo_f = stats.mannwhitneyu(without_sound, first_sound)[1]
-#             # print('{} - {} p-value: {} {} {}'.format(phone, axes_name, f_w, w_wo, wo_f))
-#
-#             wo_f_s = ''
-#             if wo_f < 0.001:
-#                 wo_f_s = '+++{:.4}'.format(wo_f)
-#             elif wo_f < 0.01:
-#                 wo_f_s = '++{:.4}'.format(wo_f)
-#             else:
-#                 wo_f_s = '{:.4}'.format(wo_f)
-#
-#             w_wo_s = ''
-#             if w_wo < 0.001:
-#                 w_wo_s = '+++{:.4}'.format(w_wo)
-#             elif w_wo < 0.01:
-#                 w_wo_s = '++{:.4}'.format(w_wo)
-#             else:
-#                 w_wo_s = '{:.4}'.format(w_wo)
-#
-#
-#             f_w_s = ''
-#             if f_w < 0.001:
-#                 f_w_s = '+++{:.4}'.format(f_w)
-#             elif f_w < 0.01:
-#                 f_w_s = '++{:.4}'.format(f_w)
-#             else:
-#                 f_w_s = '{:.4}'.format(f_w)
-#
-#             if f_w > 0.01 and wo_f < 0.001 and w_wo < 0.001 and \
-#                     ((np.mean(first_sound) > np.mean(without_sound) and np.mean(with_sound) > np.mean(without_sound)) or
-#                     (np.mean(first_sound) < np.mean(without_sound) and np.mean(with_sound) < np.mean(without_sound))):
-#                 print('{} - {} p-values: {:.4} {:.4} {:.4}'.format(phone, axes_name, f_w, wo_f, w_wo))
-#                 # plt.hist(first_sound, 100, alpha=0.5, label='first')
-#                 # plt.hist(with_sound, 100, alpha=0.5, label='with')
-#                 # plt.hist(without_sound, 100, alpha=0.5, label='without')
-#                 # plt.savefig('plots/' + phone + '__' + axes_name + '.png')
-#                 # plt.close()
-#
-#             csv_writer.writerow({
-#                 'phone': phone,
-#                 'axes': axes_name,
-#                 'first_without': wo_f_s,
-#                 'with_without': w_wo_s,
-#                 'first_with': f_w_s
-#             })
+with open('results.csv', 'w', newline='', encoding='utf8') as csv_file:
+    fieldnames = ['phone', 'axes', 'first_with', 'with_without', 'first_without']
+    csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+    csv_writer.writeheader()
+    for phone, axis in projection_axis_es.items():
+        for axes_name, distributions in axis.items():
+            first_sound = distributions[0]
+            with_sound = distributions[1]
+            without_sound = distributions[2]
+
+            f_w = 1.0
+            w_wo = 1.0
+            wo_f = 1.0
+            if len(first_sound) > 100 and len(with_sound) > 100:
+                f_w = stats.mannwhitneyu(first_sound, with_sound)[1]
+            if len(with_sound) > 100 and len(without_sound) > 100:
+                w_wo = stats.mannwhitneyu(with_sound, without_sound)[1]
+            if len(without_sound) > 100 and len(first_sound) > 100:
+                wo_f = stats.mannwhitneyu(without_sound, first_sound)[1]
+            # print('{} - {} p-value: {} {} {}'.format(phone, axes_name, f_w, w_wo, wo_f))
+
+            wo_f_s = ''
+            if wo_f < 0.001:
+                wo_f_s = '+++{:.4}'.format(wo_f)
+            elif wo_f < 0.01:
+                wo_f_s = '++{:.4}'.format(wo_f)
+            else:
+                wo_f_s = '{:.4}'.format(wo_f)
+
+            w_wo_s = ''
+            if w_wo < 0.001:
+                w_wo_s = '+++{:.4}'.format(w_wo)
+            elif w_wo < 0.01:
+                w_wo_s = '++{:.4}'.format(w_wo)
+            else:
+                w_wo_s = '{:.4}'.format(w_wo)
+
+            f_w_s = ''
+            if f_w < 0.001:
+                f_w_s = '+++{:.4}'.format(f_w)
+            elif f_w < 0.01:
+                f_w_s = '++{:.4}'.format(f_w)
+            else:
+                f_w_s = '{:.4}'.format(f_w)
+
+            if (wo_f < 0.001 or w_wo < 0.001) and ((np.mean(first_sound) > np.mean(without_sound) and np.mean(
+                    with_sound) > np.mean(without_sound)) or (np.mean(first_sound) < np.mean(without_sound) and np.mean(
+                    with_sound) < np.mean(without_sound))):
+                print('{} - {} p-values: {:.4} {:.4} {:.4}'.format(phone, axes_name, f_w, wo_f, w_wo))
+                plt.hist(first_sound, 100, alpha=0.5, label='first')
+                plt.hist(with_sound, 100, alpha=0.5, label='with')
+                plt.hist(without_sound, 100, alpha=0.5, label='without')
+                plt.savefig(
+                    'C:/Users/User/anaconda3/Lib/site-packages/bokeh/server/static/js/types/models/plots/' + phone + '__' + axes_name + '.png')
+                # plt.close()
+                plt.show()
+
+            csv_writer.writerow({
+                'phone': phone,
+                'axes': axes_name,
+                'first_without': wo_f_s,
+                'with_without': w_wo_s,
+                'first_with': f_w_s
+            })
