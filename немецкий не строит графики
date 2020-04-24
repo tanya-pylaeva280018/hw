@@ -1,0 +1,530 @@
+import io
+# import numpy as np
+# import pickle
+# import scipy.stats as stats
+# import matplotlib.pyplot as plt
+# import csv
+#
+# FILE = r"C:\Users\User\Desktop\немецкий\cc.de.300.vec"
+#
+#
+# def load_vectors(fname):
+#     fin = io.open(fname, 'r', encoding='utf-8', newline='\n', errors='ignore')
+#     data = {}
+#     i = 0
+#     for line in fin:
+#         if i < 100000:
+#             tokens = line.rstrip().split(' ')
+#             data[tokens[0]] = np.array(list(map(float, np.array(tokens[1:]))))
+#             i += 1
+#         else:
+#             break
+#
+#     return data
+#
+#
+# word2vec = load_vectors(FILE)
+#
+# synonyms = {'Angular': ['eckig', 'winkelig', 'facettiert', 'gerippt', 'scharfkantig', 'zugespitzt', 'spitz'],
+#
+#             'Round': ['Windung', 'Umdrehung', 'Tour', 'Rundfahrt', 'Tur', 'Ring', 'Wahlgang', 'Wahlrunde',
+#                       'Rundstrecke', 'Runde', 'Rundgang', 'Schar', 'Kreis'],
+#
+#             'Bad': ['mies', 'miserabel', 'beschissen', 'lausig', 'mistig', 'schlimm', 'übel', 'unwohl', 'ungut',
+#                     'elend', 'arg', 'mangelhaft', 'minderwertig', 'unzuverlässig', 'nachteilig', 'dumm', 'doof', 'faul',
+#                     'gammelig', 'jämmerlich', 'kümmerlich', 'kärglich', 'missglückt', 'misslungen', 'missraten',
+#                     'schlecht', 'fürchterlich', 'hässlich', 'kläglich', 'kühl', 'schädlich'],
+#
+#             'Good': ['nett', 'reichlich', 'hübsch', 'glücklich', 'günstig', 'sauber', 'richtig', 'edel', 'ehrenhaft',
+#                      'ehrlich', 'fair', 'gesittet', 'gutherzig', 'gutmütig', 'gütig', 'herzensgut'],
+#
+#             'Cold': ['kühl', 'frisch', 'eisig', 'frostig', 'eiskalt', 'gefühllos', 'gnadenlos', 'grausam', 'herzlos',
+#                      'inhuman', 'kaltherzig', 'kalt', 'hartherzig', 'abgekühlt', 'ausgekühlt', 'bitterkalt',
+#                      'frostklirrend', 'saukalt'],
+#
+#             'Hot': ['warm', 'thermal', 'glühend', 'feurig', 'überhitzt', 'brennend', 'sengend', 'flammend', 'hitzig',
+#                     'heißblütig', 'leidenschaftlich', 'temperamentvoll', 'kochend', 'siedend'],
+#
+#             'Complex': ['Gesamtheit', 'Verbund', 'Totalität', 'Ganze', 'kompliziert', 'vielschichtig', 'schwierig',
+#                         'diffizil', 'verschachtelt', 'zusammengesetzt', 'subtil', 'schwer', 'verzwickt', 'verworren',
+#                         'verwickelt'],
+#
+#             'Simple': ['leicht', 'simpel', 'primitiv', 'elementar', 'grundlegend', 'prim', 'schlecht', 'schwach',
+#                        'bescheiden', 'frugal', 'schlicht'],
+#
+#             'Cowardly': ['Feigling', 'Angstmeier', 'Angstpeter', 'Hasenfuß', 'Hasenherz', 'Weichling', 'Angsthase',
+#                          'Memme'],
+#
+#             'Brave': ['mutig', 'unerschrocken', 'furchtlos', 'brav', 'wagemutig', 'verwegen', 'mannhaft', 'beherzt',
+#                       'mutvoll', 'heldenhaft', 'ruhmreich', 'hingebungsvoll', 'entschlossen', 'heldenmütig', 'heroisch',
+#                       'kämpferisch', 'tapfer', 'kühn', 'wacker', 'edel', 'ehrenwert'],
+#
+#             'Dangerous': ['bedrohlich', 'gefahrvoll', 'unsicher', 'prekär', 'kritisch', 'drohend', 'schädlich',
+#                           'bedenklich', 'furchtbar', 'fürchterlich', 'alarmierend', 'beunruhigend', 'lebensgefährlich',
+#                           'tödlich', 'gefährlich', 'beängstigend', 'bedrohen'],
+#
+#             'Secure': ['zuverlässig', 'robust', 'verläßlich', 'solid', 'risikofrei', 'bewährt', 'ungefährlich',
+#                        'gefahrlos', 'risikolos', 'unschädlich', 'geschützt', 'sicher', 'belastbar'],
+#
+#             'Dark': ['finster', 'düster', 'trist', 'trübsinnig', 'schwermütig', 'trübselig', 'makaber', 'schwarz',
+#                      'trüb', 'dämmerig', 'bewölkt', 'dunstig', 'verhangen', 'dumpf', 'gedämpft', 'braun', 'obskur',
+#                      'zwielichtig', 'Dunkel', 'Dunkelheit', 'Düsterkeit', 'Finsternis', 'Nacht', 'Schwärze', 'dunkel',
+#                      'lichtundurchlässig'],
+#
+#             'Luminous': ['funkelnd', 'strahlend', 'glänzend', 'gleißend', 'blitzend', 'blendend', 'hellglänzend',
+#                          'hochglänzend', 'glitzerig', 'helleuchtend', 'freudestrahlend', 'sonnig', 'blank', 'hell',
+#                          'grell', 'saftig'],
+#
+#             'Difficult': ['kompliziert', 'komplex', 'diffizil', 'vielschichtig', 'verschachtelt', 'schwer', 'hart',
+#                           'schlimm', 'schwerwiegend', 'streng', 'verzwickt', 'verworren', 'verwickelt', 'verwirrt',
+#                           'anstrengend', 'beschwerlich', 'mühselig'],
+#
+#             'Easy': ['leicht', 'simpel', 'primitiv', 'elementar', 'prim', 'einfach', 'schlicht', 'halt'],
+#
+#             'Evil': ['Übel', 'Schlechtigkeit', 'Dämon', 'Teufel', 'Satan', 'Unhold', 'Luzifer', 'Widersacher',
+#                      'Diabolus', 'Missetat', 'Wut', 'erbittert', 'erbost', 'böse', 'Böse', 'Böses', 'arg', 'bitterböse',
+#                      'boshaft', 'bösartig', 'feindlich'],
+#
+#             'Benign': ['gut', 'barmherzig', 'hilfsbereit', 'gutartig', 'gnädig', 'gutherzig', 'gutmütig', 'gütig',
+#                        'herzensgut', 'warmherzig', 'weichherzig', 'wohltätig', 'benigne', 'freundlich', 'reichlich',
+#                        'günstig', 'richtig', 'ehrlich'],
+#
+#             'Faded': ['Verblichene', 'verblaßt', 'fahl', 'verwaschen', 'blaß', 'bleich', 'verschossen', 'welk',
+#                       'verwelkt', 'verblassen', 'ausbleichen', 'verfärben', 'bleichen', 'erbleichen'],
+#
+#             'Bright': ['leuchtend', 'grell', 'glänzend', 'strahlend', 'blank', 'farbenfroh', 'farbig', 'lebhaft',
+#                        'farbenprächtig', 'farbenfreudig', 'hellfarbig', 'markant', 'blendend', 'hell', 'beleuchtet'],
+#
+#             'Feeble': ['schwächlich', 'gebrechlich', 'schmächtig', 'verkümmert', 'altersschwach', 'krank', 'kraftlos',
+#                        'schwach', 'krankhaft', 'schmerzvoll', 'schmerzlich', 'morbid', 'mickrig', 'siech'],
+#
+#             'Strong': ['kräftig', 'kraftvoll', 'intensiv', 'machtvoll', 'leistungsstark', 'leistungsfähig',
+#                        'hochleistungsfähig'],
+#
+#             'Masculine': ['Maskulin', 'viril', 'männlich', 'mannhaft'],
+#
+#             'Feminine': ['Weiblich', 'feminin', 'fraulich', 'frauenhaft', 'unmännlich'],
+#
+#             'Passive': ['inaktiv', 'passivisch', 'untätig', 'inert', 'passiv', 'unbeteiligt', 'desinteressiert',
+#                         'apathisch', 'teilnahmslos', 'träge'],
+#
+#             'Active': ['tätig', 'handelnd', 'wirksam', 'eingesetzt', 'effektiv', 'effizient', 'wirkungsvoll',
+#                        'tatkräftig', 'rührig', 'betriebsam', 'tuend', 'energisch', 'Aktiv', 'dynamisch', 'munter',
+#                        'quirlig', 'schwungvoll'],
+#
+#             'Quiet': ['ruhig', 'still', 'geräuschlos', 'sacht', 'halblaut', 'leise', 'flüsternd', 'im', 'Flüsterton',
+#                       'heimlich', 'lautlos', 'nichtlaut', 'tonlos', 'leisen', 'tuscheln', 'klanglos', 'insgeheim'],
+#
+#             'Loud': ['lärmend', 'geräuschvoll', 'lärmig', 'hallend', 'tumultuarisch', 'lautstark', 'kreischend',
+#                      'schreiend', 'vorlaut', 'klangvoll', 'wohlklingend', 'rauschend', 'tosend', 'marktschreierisch',
+#                      'reißerisch', 'Geräusch', 'Schall', 'laut', 'dröhnend', 'lauthals', 'schallend', 'forte'],
+#
+#             'Rough': ['roh', 'gröblich', 'unsanft', 'ruppig', 'derb', 'ungehobelt', 'grobschlächtig', 'ordinär',
+#                       'ungeschliffen', 'klobig', 'rüpelhaft', 'ausfallend', 'rücksichtslos', 'grob', 'brutal', 'heftig',
+#                       'rüde', 'unfreundlich'],
+#
+#             'Tender': ['weich', 'mild', 'soft', 'gelind', 'gepolstert', 'zärtlich', 'liebevoll', 'sacht', 'sanft',
+#                        'freundlich', 'großmütig', 'gut', 'gutherzig', 'gutmütig', 'gütig', 'herzlich', 'liebenswürdig'],
+#
+#             'Sad': ['betrübt', 'wehmütig', 'schwermütig', 'melancholisch', 'trübsinnig', 'unlustig', 'sehnsüchtig',
+#                     'beklemmend', 'elegisch', 'trostlos', 'trist', 'trübselig', 'bedauerlich', 'betrüblich',
+#                     'herzzerreißend', 'traurig', 'bedrückt', 'depressiv', 'deprimiert', 'niedergeschlagen', 'bekümmert',
+#                     'düster'],
+#
+#             'Joyful': ['fröhlich', 'vergnügt', 'freudvoll', 'froh', 'erfreulich', 'ausgelassen', 'selig', 'munter',
+#                        'sonnig', 'lebenslustig', 'frohgemut', 'jovial', 'spritzig', 'festlich', 'lustig', 'vergnüglich',
+#                        'amüsant', 'Freudig', 'charmant', 'gefällig', 'freudig', 'Freude', 'erfüllt', 'aufheitern',
+#                        'beglücken', 'freuen', 'Heiterkeit', 'unterhalten', 'vergnügen'],
+#
+#             'Short': ['kürzer', 'kurzzeitig', 'minutenlang', 'flüchtig', 'kurzfristig', 'knapp', 'klein', 'leicht',
+#                       'verkürzt', 'kurz', 'wenigen', 'lakonisch', 'augenblicklich', 'kurze'],
+#
+#             'Long': ['lang', 'endlos', 'ewig', 'gedehnt', 'jahrelang', 'langfristig', 'langjährig', 'langwierig',
+#                      'tagelang', 'unendlich', 'wochenlang', 'weit'],
+#
+#             'Slow': ['gemächlich', 'bedächtig', 'schleppend', 'schleichend', 'behäbig', 'umständlich', 'schläfrig',
+#                      'säumig', 'langsam', 'gemütlich', 'geruhsam'],
+#
+#             'Quick': ['rasch', 'zügig', 'prompt', 'baldig', 'quick', 'effizient', 'operativ', 'taktisch', 'rapide',
+#                       'kurzerhand', 'schleunigst', 'schnellstens', 'sofort', 'schnell', 'geschwind', 'hurtig',
+#                       'dringend', 'fix'],
+#
+#             'Small': ['winzig', 'zierlich', 'miniaturisiert', 'schmal', 'gering', 'mittelgroß', 'wenig', 'mäßig',
+#                       'minimal', 'geringfügig', 'geringer', 'klein', 'dünn'],
+#
+#             'Big': ['größer', 'hoch', 'lang', 'groß', 'gewaltig', 'stark', 'kräftig'],
+#
+#             'Smooth': ['Glatt', 'flach', 'gleichmäßig', 'gerade', 'eben', 'geradlinig', 'faltenlos', 'glatt'],
+#
+#             'Rough_or_not_smooth': ['kratzig', 'spröde', 'ungeschliffen', 'unpoliert', 'schroff'],
+#
+#             'Ugly': ['scheußlich', 'ekelhaft', 'unförmig', 'widerlich', 'unschön', 'abscheulich', 'widerwärtig',
+#                      'abstoßend', 'eklig', 'gräßlich', 'ekelerregend', 'stinkend', 'monströs', 'ungestaltet',
+#                      'schrecklich', 'schauderhaft', 'garstig', 'hässlich', 'unansehnlich', 'ungestalt', 'unästhetisch',
+#                      'unvorteilhaft', 'widrig', 'entstellt', 'fürchterlich', 'grauenhaft', 'grässlich', 'missgestaltet',
+#                      'reizlos', 'verunstaltet'],
+#
+#             'Beautiful': ['Schön', 'wunderschön', 'herrlich', 'phantastisch', 'hübsch', 'lieb', 'nett', 'niedlich',
+#                           'schick', 'elegant', 'rot', 'schmuckvoll', 'prächtig', 'prachtvoll', 'lieblich', 'malerisch',
+#                           'anmutig', 'herausgeputzt', 'schön', 'hinreißend', 'stilvoll', 'ästhetisch', 'attraktiv',
+#                           'bildschön', 'großartig', 'makellos', 'reizvoll', 'wundervoll']
+#             }
+#
+# word2trans_de = {}
+# with open(r"C:\Users\User\Desktop\немецкий\de.txt", 'r', encoding='utf-8') as in_file:
+#     for line in in_file.readlines():
+#         word = line.split()[0].strip()
+#         trans = line.split()[1].strip().replace('ˈ', '').replace('.', '').replace(
+#             '\u200d', '').replace('ˌ', '').replace("ˈ", "").replace(".", "").replace("ˌ", "").replace(
+#             "(", "").replace(")", "").replace("[", "").replace("]", "").replace("|", "").replace("||", "").replace(
+#             "ʰ", "").replace("ⁿ", "").replace("ᶿ", "").replace("ᵊ", "").replace("ˣ", "").replace("ˡ", "").replace(
+#             "п", "").replace("ʲ", "").replace("ʷ", "").replace("ˠ", "").replace("ˤ", "").replace("ˑ", "").replace('/',
+#                                                                                                                   ' ')
+#         word2trans_de[word] = trans
+# # print(word2trans_de)
+#
+# with open("word2trans_de.pkl", "wb") as out_file:
+#     pickle.dump(word2trans_de, out_file, protocol=pickle.HIGHEST_PROTOCOL)
+#
+# # phones_de = ['z', 'x', 'v', 'ʃ', 's', 'ŋ', 'n', 'm', 'l', 'k', 'j', 'h', 'ɡ', 'g', 'f', 'ç', 'b', 'ʔ', 'ə', 'ɪ', 'œ',
+# #              'ʊ', 'ʏ', 'ɾ', 'ɐ', 'χ', 'dʒ', 'tʃ', 'tʃ', 'ts', 'ʀ', 'ʁ', 'pf', 'aː', 'aʊ', 'aɪ', 'ɛː', 'eː', 'iː', 'ɔʏ',
+# #              'oː', 'øː', 'uː', 'yː', 'ɑː', 'ã', 'ɛ̃', 'ãː', 'ɛ̃ː', 'ɛɪ̯', 'œ̃ː', 'u̯', 'i̯', 'u̯', 'ər', 'l̩', 'm̩',
+# #              'n̩']
+#
+# ###################################################################################################################
+# import copy
+#
+# word2trans_de = {}
+# with open(r"C:\Users\User\Desktop\немецкий\de.txt", 'r',
+#           encoding='utf-8') as in_file:
+#     for line in in_file.readlines():
+#         word = line.strip().split()[0]
+#         trans = line.strip().split()[1].replace('.', '').replace(')', '').replace('(̩', '').replace('/', '').replace(
+#             'ˈ', '').replace("'", '').replace('͜', '').replace('ˌ', '').replace('/', '').replace('̯', '')
+#         word2trans_de[word] = trans
+# #print(word2trans)
+# #print(len(word2trans))
+#
+# words2ph_de = {}
+# for key in word2trans_de.keys():
+#     var = []
+#     phones = word2trans_de[key]
+#     for i in range(len(phones) - 1):
+#
+#         if phones[i] in 'zxvʃsŋnmlkjhɡgfçbʔəɪœʊʏɾɐχ':
+#             var.append(phones[i])
+#
+#         elif (phones[i] == 'd'):
+#             if phones[i] == 'ʒ':
+#                 var.append('dʒ')
+#             else:
+#                 var.append('d')
+#
+#         elif (phones[i] == 'ʧ'):
+#             var.append('tʃ')
+#
+#         elif (phones[i] == 't'):
+#             if (phones[i + 1] == 'ʃ'):
+#                 var.append('tʃ')
+#             elif (phones[i + 1] == 's'):
+#                 var.append('ts')
+#             else:
+#                 var.append('t')
+#
+#         elif (phones[i] == 'r') or (phones[i] == 'ʀ') or (phones[i] == 'ʁ'):
+#             var.append('r')
+#
+#         elif (phones[i] == 'p'):
+#             if (phones[i + 1] == 'f'):
+#                 var.append('pf')
+#             else:
+#                 var.append('p')
+#
+#         elif (phones[i] == 'a'):
+#             if phones[i + 1] == 'ː':
+#                 var.append('aː')
+#             elif phones[i + 1] == 'ʊ':
+#                 var.append('aʊ')
+#             elif phones[i + 1] == 'ɪ':
+#                 var.append('aɪ')
+#             else:
+#                 var.append('a')
+#
+#         elif (phones[i] == 'ɛ'):
+#             if phones[i + 1] == 'ː':
+#                 var.append('ɛː')
+#             else:
+#                 var.append('ɛ')
+#
+#         elif (phones[i] == 'e'):
+#             if phones[i + 1] == 'ː':
+#                 var.append('eː')
+#             else:
+#                 var.append('e')
+#
+#         elif (phones[i] == 'i'):
+#             if phones[i + 1] == 'ː':
+#                 var.append('iː')
+#             else:
+#                 var.append('i')
+#
+#         elif (phones[i] == 'ɔ'):
+#             if phones[i + 1] == 'ʏ':
+#                 var.append('ɔʏ')
+#             else:
+#                 var.append('ɔ')
+#
+#         elif (phones[i] == 'o'):
+#             if phones[i + 1] == 'ː':
+#                 var.append('oː')
+#             else:
+#                 var.append('o')
+#
+#         elif (phones[i] == 'ø'):
+#             if phones[i + 1] == 'ː':
+#                 var.append('øː')
+#             else:
+#                 var.append('ø')
+#
+#         elif (phones[i] == 'u'):
+#             if phones[i + 1] == 'ː':
+#                 var.append('uː')
+#             else:
+#                 var.append('u')
+#
+#         elif (phones[i] == 'y'):
+#             if phones[i + 1] == 'ː':
+#                 var.append('yː')
+#             else:
+#                 var.append('y')
+#
+#         elif (phones[i] == 'ɑ'):
+#             if phones[i + 1] == 'ː':
+#                 var.append('ɑː')
+#             else:
+#                 var.append('ɑ')
+#
+#     words2ph_de[key] = var
+#
+# #print(words2ph_de)
+#
+# words2ph_de_final = copy.deepcopy(words2ph_de)
+# count = 0
+# for key in words2ph_de.keys():
+#     var = words2ph_de[key]
+#     if var == []:
+#         del words2ph_de_final[key]
+#         count += 1
+# #print(words2ph_de_final)
+# #print(len(words2ph_de_final))
+#
+# with open("words2ph_de_final.pkl", "wb") as out_file:
+#     pickle.dump(words2ph_de_final, out_file, protocol=pickle.HIGHEST_PROTOCOL)
+#
+# ###################################################################################################################
+#
+# axes2vec_de = {}
+#
+# for item in synonyms.items():
+#     sum = np.zeros((300))
+#     for word in item[1]:
+#         try:
+#             sum += np.array(list(word2vec[word]))
+#             # print(sum)
+#         except:
+#             pass
+#             # print(word)
+#     axes2vec_de[item[0]] = sum
+#
+# # print(axes2vec_de)
+#
+# with open("axes2vec_de.pkl", "wb") as out_file:
+#     pickle.dump(axes2vec_de, out_file, protocol=pickle.HIGHEST_PROTOCOL)
+#
+# word2vectrans_de = {}
+#
+# for word in words2ph_de_final.keys():
+#     try:
+#         word2vectrans_de[word] = (word2vec[word], words2ph_de_final[word])
+#     except:
+#         pass
+#         # print(word)
+#
+# word2vectrans_de = {word: (np.array(list(vec)), trans)
+#                     for
+#                     word, (vec, trans)
+#                     in
+#                     word2vectrans_de.items()}
+#
+# with open("word2vectrans_de.pkl", "wb") as out_file:
+#     pickle.dump(word2vectrans_de, out_file, protocol=pickle.HIGHEST_PROTOCOL)
+# # print(word2vectrans_de)
+#
+#
+# axis_de = {
+#     'Angular - Round': (-(axes2vec_de['Angular']) + axes2vec_de['Round']),
+#     'Bad - Good': (-(axes2vec_de['Bad']) + axes2vec_de['Good']),
+#     'Cold - Hot': (-(axes2vec_de['Cold']) + axes2vec_de['Hot']),
+#     'Complex - Simple': (-(axes2vec_de['Complex']) + axes2vec_de['Simple']),
+#     'Cowardly - Brave': (-(axes2vec_de['Cowardly']) + axes2vec_de['Brave']),
+#     'Dangerous - Secure': (-(axes2vec_de['Dangerous']) + axes2vec_de['Secure']),
+#     'Dark - Luminous': (-(axes2vec_de['Dark']) + axes2vec_de['Luminous']),
+#     'Difficult - Easy': (-(axes2vec_de['Difficult']) + axes2vec_de['Easy']),
+#     'Evil - Benign': (-(axes2vec_de['Evil']) + axes2vec_de['Benign']),
+#     'Faded - Bright': (-(axes2vec_de['Faded']) + axes2vec_de['Bright']),
+#     'Feeble - Strong': (-(axes2vec_de['Feeble']) + axes2vec_de['Strong']),
+#     'Masculine - Feminine': (-(axes2vec_de['Masculine']) + axes2vec_de['Feminine']),
+#     'Passive - Active': (-(axes2vec_de['Passive']) + axes2vec_de['Active']),
+#     'Quiet - Loud': (-(axes2vec_de['Quiet']) + axes2vec_de['Loud']),
+#     'Rough - Tender': (-(axes2vec_de['Rough']) + axes2vec_de['Tender']),
+#     'Sad - Joyful': (-(axes2vec_de['Sad']) + axes2vec_de['Joyful']),
+#     'Short - Long': (-(axes2vec_de['Short']) + axes2vec_de['Round']),
+#     'Slow - Quick': (-(axes2vec_de['Slow']) + axes2vec_de['Quick']),
+#     'Small - Big': (-(axes2vec_de['Small']) + axes2vec_de['Big']),
+#     'Smooth - Rough_or_not_smooth': (-(axes2vec_de['Smooth']) + axes2vec_de['Rough_or_not_smooth']),
+#     'Ugly - Beautiful': (-(axes2vec_de['Ugly']) + axes2vec_de['Beautiful']),
+# }
+# with open("axis_de.pkl", "wb") as out_file:
+#     pickle.dump(axis_de, out_file, protocol=pickle.HIGHEST_PROTOCOL)
+# # print(axis_de)
+#
+# sounds = []
+# for item in word2vectrans_de.items():
+#     transcription = item[1][1]
+#     try:
+#         sounds += transcription
+#     except:
+#         pass
+#         #print(transcription)
+# sounds = list(set(sounds))
+#
+# with open("sounds.pkl", "wb") as out_file:
+#     pickle.dump(sounds, out_file, protocol=pickle.HIGHEST_PROTOCOL)
+#
+# # phones_de = ['z', 'x', 'v', 'ʃ', 's', 'ŋ', 'n', 'm', 'l', 'k', 'j', 'h', 'ɡ', 'g', 'f', 'ç', 'b', 'ʔ', 'ə', 'ɪ', 'œ',
+# #              'ʊ', 'ʏ', 'ɾ', 'ɐ', 'χ', 'dʒ', 'tʃ', 'tʃ', 'ts', 'ʀ', 'ʁ', 'pf', 'aː', 'aʊ', 'aɪ', 'ɛː', 'eː', 'iː', 'ɔʏ',
+# #              'oː', 'øː', 'uː', 'yː', 'ɑː', 'ã', 'ɛ̃', 'ãː', 'ɛ̃ː', 'ɛɪ̯', 'œ̃ː', 'u̯', 'i̯', 'u̯', 'ər', 'l̩', 'm̩',
+# #              'n̩']
+#
+# # with open("phones_de.pkl", "wb") as out_file:
+# #     pickle.dump(phones_de, out_file, protocol=pickle.HIGHEST_PROTOCOL)
+#
+# # with open("phones_de.pkl", "rb") as out_file:
+# #     sounds = pickle.load(out_file)
+#
+# with open("word2vectrans_de.pkl", "rb") as out_file:
+#     word2vectrans_de = pickle.load(out_file)
+#
+# sound2word_de = {}
+#
+# for sound in sounds:
+#     first_sound_de = []
+#     with_sound_de = []
+#     without_sound_de = []
+#     for word, (vec, phones) in word2vectrans_de.items():
+#         transcription = phones
+#         if transcription[0] == sound:
+#             #print(transcription[0])
+#             first_sound_de.append(word)
+#         elif sound in transcription:
+#             with_sound_de.append(word)
+#         else:
+#             without_sound_de.append(word)
+#     sound2word_de[sound] = (first_sound_de, with_sound_de, without_sound_de)
+# # print(sound2word_de)
+#
+# cos_vec = {}
+# sum_vec = 0
+# sum_axis = 0
+#
+# projection_axis_de = {}
+# for sound in sounds:
+#     projection_axis_de[sound] = {}
+#     for axes_name, axes_vec in axis_de.items():
+#         len_axes = np.linalg.norm(axes_vec)
+#         axes = axes_vec / len_axes
+#         axes_distributions = []
+#         for distribution in sound2word_de[sound]:
+#             cosine_list = []
+#             for word in distribution:
+#                 word_vec = word2vectrans_de[word][0]
+#                 len_vec = np.linalg.norm(word_vec)
+#                 vec = word_vec / len_vec
+#                 cosine_between_vectors = np.dot(vec, axes)
+#                 cosine_list.append(cosine_between_vectors)
+#             axes_distributions.append(cosine_list)
+#         # print('{} - {} Dist lens: {} {} {} Sum: {}'.format(sound, axes_name,
+#         #                                                    len(axes_distributions[0]), len(axes_distributions[1]),
+#         #                                                    len(axes_distributions[2]),
+#         #                                                    len(axes_distributions[0]) + len(
+#         #                                                        axes_distributions[1]) + len(axes_distributions[2])
+#         #                                                   ))
+#         projection_axis_de[sound][axes_name] = axes_distributions
+#
+# with open("projection_axis_de.pkl", "wb") as out_file:
+#     pickle.dump(projection_axis_de, out_file, protocol=pickle.HIGHEST_PROTOCOL)
+#
+# with open('results_de.csv', 'w', newline='', encoding='utf8') as csv_file:
+#     fieldnames = ['phone', 'axes', 'first_with', 'with_without', 'first_without']
+#     csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+#     csv_writer.writeheader()
+#     for phone, axis in projection_axis_de.items():
+#         for axes_name, distributions in axis.items():
+#             first_sound = distributions[0]
+#             with_sound = distributions[1]
+#             without_sound = distributions[2]
+#
+#             f_w = 1.0
+#             w_wo = 1.0
+#             wo_f = 1.0
+#             if len(first_sound) > 100 and len(with_sound) > 100 and not first_sound:
+#                 f_w = stats.mannwhitneyu(first_sound, with_sound)[1]
+#             if len(with_sound) > 100 and len(without_sound) > 100 and not with_sound:
+#                 w_wo = stats.mannwhitneyu(with_sound, without_sound)[1]
+#             if len(without_sound) > 100 and len(first_sound) > 100 and not with_sound:
+#                 wo_f = stats.mannwhitneyu(without_sound, first_sound)[1]
+#             # print('{} - {} p-value: {} {} {}'.format(phone, axes_name, f_w, w_wo, wo_f))
+#
+#             wo_f_s = ''
+#             if wo_f < 0.001:
+#                 wo_f_s = '+++{:.4}'.format(wo_f)
+#             elif wo_f < 0.01:
+#                 wo_f_s = '++{:.4}'.format(wo_f)
+#             else:
+#                 wo_f_s = '{:.4}'.format(wo_f)
+#
+#             w_wo_s = ''
+#             if w_wo < 0.001:
+#                 w_wo_s = '+++{:.4}'.format(w_wo)
+#             elif w_wo < 0.01:
+#                 w_wo_s = '++{:.4}'.format(w_wo)
+#             else:
+#                 w_wo_s = '{:.4}'.format(w_wo)
+#
+#             f_w_s = ''
+#             if f_w < 0.001:
+#                 f_w_s = '+++{:.4}'.format(f_w)
+#             elif f_w < 0.01:
+#                 f_w_s = '++{:.4}'.format(f_w)
+#             else:
+#                 f_w_s = '{:.4}'.format(f_w)
+#
+#             if (wo_f < 0.001 or w_wo < 0.001) and ((np.mean(first_sound) > np.mean(without_sound) and np.mean(
+#                     with_sound) > np.mean(without_sound)) or (np.mean(first_sound) < np.mean(without_sound) and np.mean(
+#                 with_sound) < np.mean(without_sound))) and ():
+#                 print('{} - {} p-values: {:.4} {:.4} {:.4}'.format(phone, axes_name, f_w, wo_f, w_wo))
+#                 plt.hist(first_sound, 100, alpha=0.5, label='first')
+#                 plt.hist(with_sound, 100, alpha=0.5, label='with')
+#                 plt.hist(without_sound, 100, alpha=0.5, label='without')
+#                 plt.savefig(
+#                     'C:/Users/User/anaconda3/Lib/site-packages/bokeh/server/static/js/types/models/plots/' + phone + '__' + axes_name + '.png')
+#                 plt.close()
+#                 plt.show()
+#
+#             csv_writer.writerow({
+#                 'phone': phone,
+#                 'axes': axes_name,
+#                 'first_without': wo_f_s,
+#                 'with_without': w_wo_s,
+#                 'first_with': f_w_s
+#             })
